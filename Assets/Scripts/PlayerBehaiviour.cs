@@ -146,7 +146,7 @@ public class MoveSettings
 {
     public float RunVelocity = 12;
     public float JumpVelocity = 8;
-    public float DistanceToGround = 1.3f;
+    public float DistanceToGround = 0.5f;
     public LayerMask Ground;
 }
 
