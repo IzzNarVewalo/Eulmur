@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerBehaiviouc : MonoBehaviour {
+public class PlayerBehaiviour : MonoBehaviour {
     public MoveSettings moveSettings;
     public InputSettings inputSettings;
     public Transform spawnPoint;
-    private Rigidbody player1Rigidbody, player2Rigidbody;
+    private Rigidbody2D player1Rigidbody, player2Rigidbody;
     private Vector3 p1velocity, p2velocity;
     private float p1SidewaysInput, p2SidewaysInput, p1JumpInput, p2JumpInput;
     public LayerMask Layers;
 
     private void Awake()
     {
-        player1Rigidbody = GameObject.FindGameObjectWithTag("Owl").GetComponent<Rigidbody>();
-        player2Rigidbody = GameObject.FindGameObjectWithTag("Lemur").GetComponent<Rigidbody>();
+        player1Rigidbody = GameObject.FindGameObjectWithTag("Owl").GetComponent<Rigidbody2D>();
+        player2Rigidbody = GameObject.FindGameObjectWithTag("Lemur").GetComponent<Rigidbody2D>();
         p1velocity = Vector3.zero;
         p1SidewaysInput = p1JumpInput = 0;
         p2velocity = Vector3.zero;
@@ -41,7 +41,7 @@ public class PlayerBehaiviouc : MonoBehaviour {
 
     void Jump()
     {
-        if (p1JumpInput != 0 && OwlPlayer())
+        if (p1JumpInput != 0 && OwlGrounded())
         {
             player1Rigidbody.velocity = new Vector2(player1Rigidbody.velocity.x, moveSettings.JumpVelocity);
         }
@@ -57,7 +57,7 @@ public class PlayerBehaiviouc : MonoBehaviour {
         return Physics.Raycast(GameObject.FindGameObjectWithTag("ShadowPlayer").transform.position, Vector3.down, moveSettings.DistanceToGround, moveSettings.Ground);
     }
 
-    bool OwlPlayer()
+    bool OwlGrounded()
     {
 
         return Physics.Raycast(GameObject.FindGameObjectWithTag("LightPlayer").transform.position, Vector3.down, moveSettings.DistanceToGround, moveSettings.Ground);
@@ -75,7 +75,6 @@ public class PlayerBehaiviouc : MonoBehaviour {
         Run();
         Jump();
     }
-
 
 }
 
