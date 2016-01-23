@@ -85,125 +85,6 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &120965196
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 120965198}
-  - 212: {fileID: 120965197}
-  - 50: {fileID: 120965199}
-  - 114: {fileID: 120965201}
-  - 114: {fileID: 120965200}
-  m_Layer: 0
-  m_Name: Lemur
-  m_TagString: Lemur
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &120965197
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 120965196}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
---- !u!4 &120965198
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 120965196}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.45, z: 0}
-  m_LocalScale: {x: 1.4549961, y: 1.4186214, z: 1.4549962}
-  m_Children:
-  - {fileID: 293182250}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
---- !u!50 &120965199
-Rigidbody2D:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 120965196}
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &120965200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 120965196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55cf67a0c35e42d469a3ef60c19e220b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSettings:
-    RunVelocity: 12
-    JumpVelocity: 8
-    DistanceToGround: 1.3
-    Ground:
-      serializedVersion: 2
-      m_Bits: 0
-  inputSettings:
-    PLAYER1_SIDEWAYS_AXIS: Player1Horizontal
-    PLAYER1_JUMP_AXIS: Player1Jump
-    PLAYER1_FLY_AXIS: Player1Fly
-    PLAYER2_SIDEWAYS_AXIS: Player2Horizontal
-    PLAYER2_JUMP_AXIS: Player2Jump
-    PLAYER2_CROUCH_AXIS: Player2Crouch
-  spawnPoint: {fileID: 0}
-  Layers:
-    serializedVersion: 2
-    m_Bits: 0
---- !u!114 &120965201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 120965196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8af42448e98e27842b53f2c3e4141d81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &129672156
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,9 +167,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 293182250}
   - 212: {fileID: 293182251}
+  - 114: {fileID: 293182255}
+  - 114: {fileID: 293182254}
+  - 50: {fileID: 293182253}
+  - 61: {fileID: 293182252}
   m_Layer: 0
-  m_Name: 40707533
-  m_TagString: Untagged
+  m_Name: Lemur
+  m_TagString: Lemur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -300,11 +185,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 293182249}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.22499998, z: 0.2}
+  m_LocalPosition: {x: -1.104, y: 0.545, z: 0}
+  m_LocalScale: {x: 0.29099923, y: 0.3191898, z: 0.29099926}
   m_Children: []
-  m_Father: {fileID: 120965198}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
 --- !u!212 &293182251
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -335,6 +220,77 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!61 &293182252
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 293182249}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 3.43, y: 6.04}
+--- !u!50 &293182253
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 293182249}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &293182254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 293182249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af42448e98e27842b53f2c3e4141d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &293182255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 293182249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55cf67a0c35e42d469a3ef60c19e220b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSettings:
+    RunVelocity: 12
+    JumpVelocity: 8
+    DistanceToGround: 1.3
+    Ground:
+      serializedVersion: 2
+      m_Bits: 0
+  inputSettings:
+    PLAYER1_SIDEWAYS_AXIS: Player1Horizontal
+    PLAYER1_JUMP_AXIS: Player1Jump
+    PLAYER1_FLY_AXIS: Player1Fly
+    PLAYER2_SIDEWAYS_AXIS: Player2Horizontal
+    PLAYER2_JUMP_AXIS: Player2Jump
+    PLAYER2_CROUCH_AXIS: Player2Crouch
+  spawnPoint: {fileID: 0}
+  Layers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &318661887
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +463,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1190576489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.01, y: 0.114, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -528,7 +484,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1190576494
 BoxCollider2D:
   m_ObjectHideFlags: 0
