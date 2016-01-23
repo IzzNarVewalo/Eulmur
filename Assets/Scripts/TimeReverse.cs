@@ -5,7 +5,8 @@ using System.Collections.Generic;
 
 public class TimeReverse : MonoBehaviour {
 
-	private Stack<TRObject> objectsOnStack = new Stack<TRObject>();
+	//private Stack<TRObject> objectsOnStack = new Stack<TRObject>();
+	private CircularBuffer objectsInCircularBuffer = new CircularBuffer(1000);
 
 	private ITR otherScript;
 	void Start ()
@@ -19,8 +20,8 @@ public class TimeReverse : MonoBehaviour {
 		if
 			(Input.GetButton ("TimeControl"))
 		{
-			if(objectsOnStack.Count > 0)
-				otherScript.LoadTRObject (objectsOnStack.Pop());
+			if(objectsInCircularBuffer.Count > 0)
+				otherScript.LoadTRObject (objectsInCircularBuffer.Pop());
 		}
 		else
 
@@ -29,6 +30,6 @@ public class TimeReverse : MonoBehaviour {
 
 	public void PushTRObject(TRObject trobject)
 	{
-		objectsOnStack.Push(trobject);
+		objectsInCircularBuffer.Push(trobject);
 	}
 }
