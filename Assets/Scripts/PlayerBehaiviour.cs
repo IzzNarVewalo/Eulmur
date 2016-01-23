@@ -56,13 +56,13 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
     bool LemurGrounded()
     {
 
-        return Physics.Raycast(GameObject.FindGameObjectWithTag("ShadowPlayer").transform.position, Vector3.down, moveSettings.DistanceToGround, moveSettings.Ground);
+        return Physics.Raycast(GameObject.FindGameObjectWithTag("Lemur").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
     }
 
     bool OwlGrounded()
     {
 
-        return Physics.Raycast(GameObject.FindGameObjectWithTag("LightPlayer").transform.position, Vector3.down, moveSettings.DistanceToGround, moveSettings.Ground);
+        return Physics.Raycast(GameObject.FindGameObjectWithTag("Owl").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
     }
 
     public void Spawn()
