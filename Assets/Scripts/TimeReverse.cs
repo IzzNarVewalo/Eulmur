@@ -26,4 +26,9 @@ public class TimeReverse : MonoBehaviour {
 
 		otherScript.SaveTRObject (); //um frameunabhaengig zu bleiben
 	}
+
+	public void PushTRObject(TRObject trobject)
+	{
+		objectsOnStack.Push(trobject);
+	}
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerBehaiviour : MonoBehaviour {
+public class PlayerBehaiviour : MonoBehaviour, ITR {
     public MoveSettings moveSettings;
     public InputSettings inputSettings;
     public Transform spawnPoint;
@@ -9,6 +9,8 @@ public class PlayerBehaiviour : MonoBehaviour {
     private Vector3 p1velocity, p2velocity;
     private float p1SidewaysInput, p2SidewaysInput, p1JumpInput, p2JumpInput;
     public LayerMask Layers;
+
+	private TimeReverse trscript;
 
     private void Awake()
     {
@@ -70,11 +72,72 @@ public class PlayerBehaiviour : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+
+		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
+		return;
+
         GetPlayer1Input();
         GetPlayer2Input();
         Run();
         Jump();
     }
+
+	void FixedUpdate(){
+
+		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
+			return;
+
+
+		//hae?????
+		if (!player1Rigidbody.isKinematic && !player2Rigidbody.isKinematic)
+		{
+			Run();
+			Jump();
+		}
+
+		if (!player2Rigidbody.isKinematic)
+		{
+			Run();
+			Jump();
+		}
+
+	}
+
+	void Start(){
+
+		trscript = GetComponent<TimeReverse> ();
+	}
+
+	//fuer TimeReverse
+	#region ITR implementation
+	public void SaveTRObject ()
+	{
+		MyStatus status = new MyStatus();
+		status.myPosition = transform.position;
+		//status.myRotation = transform.rotation;, gibts doch nicht, oder?
+		trscript.PushTRObject (status);
+		player2Rigidbody.isKinematic = false;
+		player1Rigidbody.isKinematic = false;
+	}
+
+	public void LoadTRObject (TRObject trobject)
+	{
+		MyStatus newStatus = (MyStatus)trobject;
+		transform.position = newStatus.myPosition;
+		//transform.rotation = newStatus.myRotation;
+		player1Rigidbody.isKinematic = true;
+		player2Rigidbody.isKinematic = true;
+	}
+	#endregion
+
+	private class MyStatus: TRObject
+	{
+		public Vector2 myPosition;
+		//evtl. brauche mehr
+
+	}
+
+
 
 }
 
