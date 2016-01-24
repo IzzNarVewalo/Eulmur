@@ -146,7 +146,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 public class MoveSettings
 {
     public float RunVelocity = 12;
-    public float JumpVelocity = 0.1f;
+    public float JumpVelocity = 1f;
     public float DistanceToGround = 0.5f;
     public LayerMask Ground;
 }

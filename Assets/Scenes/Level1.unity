@@ -204,7 +204,7 @@ GameObject:
   - 4: {fileID: 129672159}
   - 212: {fileID: 129672158}
   - 61: {fileID: 129672157}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boden
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - 4: {fileID: 286703496}
   - 212: {fileID: 286703495}
   - 61: {fileID: 286703494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grund
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,11 +638,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSettings:
     RunVelocity: 12
-    JumpVelocity: 8
+    JumpVelocity: 0.3
     DistanceToGround: 1.3
     Ground:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 256
   inputSettings:
     PLAYER1_SIDEWAYS_AXIS: Player1Horizontal
     PLAYER1_JUMP_AXIS: Player1Jump
@@ -667,6 +667,7 @@ GameObject:
   - 124: {fileID: 318661889}
   - 81: {fileID: 318661888}
   - 114: {fileID: 318661893}
+  - 114: {fileID: 318661894}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -752,6 +753,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf6a0147c2e2344ab6b157ffe7f0a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &318661894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 318661887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554b14486b431d745aa8288751cf623a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Owl: {fileID: 1190576489}
+  Lemur: {fileID: 293182249}
 --- !u!1001 &327516767
 Prefab:
   m_ObjectHideFlags: 0
@@ -900,7 +914,7 @@ GameObject:
   - 4: {fileID: 509712028}
   - 212: {fileID: 509712030}
   - 61: {fileID: 509712029}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boden (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1031,7 +1045,7 @@ GameObject:
   - 4: {fileID: 709784073}
   - 212: {fileID: 709784075}
   - 61: {fileID: 709784074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grund
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1104,7 +1118,7 @@ GameObject:
   - 4: {fileID: 723908828}
   - 212: {fileID: 723908830}
   - 61: {fileID: 723908829}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grund
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1562,11 +1576,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSettings:
     RunVelocity: 12
-    JumpVelocity: 8
+    JumpVelocity: 0.3
     DistanceToGround: 1.3
     Ground:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 256
   inputSettings:
     PLAYER1_SIDEWAYS_AXIS: Player1Horizontal
     PLAYER1_JUMP_AXIS: Player1Jump
@@ -2034,7 +2048,7 @@ GameObject:
   - 4: {fileID: 1502468213}
   - 212: {fileID: 1502468215}
   - 61: {fileID: 1502468214}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boden (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2361,7 +2375,7 @@ GameObject:
   - 4: {fileID: 1741440226}
   - 212: {fileID: 1741440228}
   - 61: {fileID: 1741440227}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grund
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2596,7 +2610,7 @@ GameObject:
   - 4: {fileID: 2069159147}
   - 212: {fileID: 2069159149}
   - 61: {fileID: 2069159148}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boden (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
