@@ -8,6 +8,9 @@ TagManager:
   - Lemur
   - Deathzone
   - Grenze
+  - Farbe
+  - WandoberesEnde
+  - Farbig
   layers:
   - Default
   - TransparentFX
