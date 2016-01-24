@@ -11,6 +11,7 @@ TagManager:
   - Farbe
   - WandoberesEnde
   - Farbig
+  - Wand
   layers:
   - Default
   - TransparentFX
