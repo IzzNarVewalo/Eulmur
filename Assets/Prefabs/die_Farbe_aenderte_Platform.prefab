@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 447390}
   - 212: {fileID: 21202918}
   - 61: {fileID: 6141952}
+  - 50: {fileID: 5096090}
+  - 114: {fileID: 11497108}
   m_Layer: 0
   m_Name: die_Farbe_aenderte_Platform
   m_TagString: Untagged
@@ -29,6 +31,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5096090
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199750}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6141952
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -43,6 +62,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 13.66, y: 7.68}
+--- !u!114 &11497108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a51052f3a6898848b2b7a2da82a1903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21202918
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -79,7 +109,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 199750}

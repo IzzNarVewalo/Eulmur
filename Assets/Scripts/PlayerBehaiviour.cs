@@ -75,7 +75,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
     // Update is called once per frame
     void Update () {
-        Debug.Log(p1JumpInput);
+        //Debug.Log(p1JumpInput);
 
 		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
 		return;
@@ -110,6 +110,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 	void Start(){
 
 		trscript = GetComponent<TimeReverse> ();
+		Debug.Log (GameObject.FindGameObjectsWithTag ("Grenze"));
 	}
 
 	//fuer TimeReverse
