@@ -6,7 +6,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
     public InputSettings inputSettings;
     public Transform spawnPoint;
     private Rigidbody2D player1Rigidbody, player2Rigidbody;
-    private Vector3 p1velocity, p2velocity;
+    private Vector2 p1velocity, p2velocity;
     private float p1SidewaysInput, p2SidewaysInput, p1JumpInput, p2JumpInput;
     public LayerMask Layers;
 
@@ -27,6 +27,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
         p1SidewaysInput = Input.GetAxis(inputSettings.PLAYER1_SIDEWAYS_AXIS);
         p1JumpInput = Input.GetAxisRaw(inputSettings.PLAYER1_JUMP_AXIS);
     }
+
     void GetPlayer2Input()
     {
         p2SidewaysInput = Input.GetAxis(inputSettings.PLAYER2_SIDEWAYS_AXIS);
@@ -56,13 +57,13 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
     bool LemurGrounded()
     {
 
-        return Physics.Raycast(GameObject.FindGameObjectWithTag("Lemur").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
+        return Physics2D.Raycast(GameObject.FindGameObjectWithTag("Lemur").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
     }
 
     bool OwlGrounded()
     {
 
-        return Physics.Raycast(GameObject.FindGameObjectWithTag("Owl").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
+        return Physics2D.Raycast(GameObject.FindGameObjectWithTag("Owl").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
     }
 
     public void Spawn()
@@ -72,6 +73,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
     // Update is called once per frame
     void Update () {
+        Debug.Log(p1JumpInput);
 
 		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
 		return;
