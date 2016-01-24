@@ -137,7 +137,7 @@ GameObject:
   - 4: {fileID: 129672159}
   - 212: {fileID: 129672158}
   - 61: {fileID: 129672157}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boden
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   Layers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!1 &318661887
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +443,7 @@ GameObject:
   - 4: {fileID: 509712028}
   - 212: {fileID: 509712030}
   - 61: {fileID: 509712029}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boden (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -714,7 +714,7 @@ MonoBehaviour:
     DistanceToGround: 1.3
     Ground:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 256
   inputSettings:
     PLAYER1_SIDEWAYS_AXIS: Player1Horizontal
     PLAYER1_JUMP_AXIS: Player1Jump
@@ -725,7 +725,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   Layers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
 --- !u!212 &1190576491
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1024,7 +1024,7 @@ GameObject:
   - 4: {fileID: 1502468213}
   - 212: {fileID: 1502468215}
   - 61: {fileID: 1502468214}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boden (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

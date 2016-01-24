@@ -46,11 +46,13 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
     {
         if (p1JumpInput != 0 && OwlGrounded())
         {
-            player1Rigidbody.velocity = new Vector2(player1Rigidbody.velocity.x, moveSettings.JumpVelocity);
+            player1Rigidbody.AddForce(Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
+            // = new Vector2(player1Rigidbody.velocity.x, moveSettings.JumpVelocity);
         }
         if (p2JumpInput != 0 && LemurGrounded())
         {
-            player2Rigidbody.velocity = new Vector2(player2Rigidbody.velocity.x, moveSettings.JumpVelocity);
+            player2Rigidbody.AddForce(Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
+            //player2Rigidbody.velocity = new Vector2(player2Rigidbody.velocity.x, moveSettings.JumpVelocity);
         }
     }
 
@@ -136,18 +138,15 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 	{
 		public Vector2 myPosition;
 		//evtl. brauche mehr
-
-	}
-
-
-
+   	}
+    
 }
 
 [System.Serializable]
 public class MoveSettings
 {
     public float RunVelocity = 12;
-    public float JumpVelocity = 8;
+    public float JumpVelocity = 0.1f;
     public float DistanceToGround = 0.5f;
     public LayerMask Ground;
 }
