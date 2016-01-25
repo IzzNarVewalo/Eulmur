@@ -4,7 +4,7 @@ using System.Collections;
 public class die_Farbe_aenderte_Platform : MonoBehaviour {
 
 	private int mitzaehlvariable = 0;
-	public bool rot = false;
+	public static bool rot = false;
 
 	// Use this for initialization
 	void Start () {
@@ -32,10 +32,13 @@ public class die_Farbe_aenderte_Platform : MonoBehaviour {
 
 				rend.material.SetColor ("_Color", Color.blue);
 
+
+				if (rot != true) {
+					GameObject.FindGameObjectWithTag ("Wand").GetComponent<bewege_Wand> ().runter ();
+				}
+
 				rot = false;
 				mitzaehlvariable++;
-
-				GameObject.FindGameObjectWithTag ("Wand").GetComponent<bewege_Wand> ().runter ();
 
 				return;
 			}
@@ -47,7 +50,6 @@ public class die_Farbe_aenderte_Platform : MonoBehaviour {
 				rend.material.SetColor ("_Color", Color.magenta);
 
 				mitzaehlvariable++;
-				rot = false;
 
 				return;
 			}

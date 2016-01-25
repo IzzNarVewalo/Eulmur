@@ -15,7 +15,7 @@ public class bewege_Wand : MonoBehaviour {
 	public void runter(){
 
 
-		if(this.transform.position.y > 3){
+		if(this.transform.position.y > 3.75f){
 			this.transform.Translate (0, -2f,0);
 		}
 
