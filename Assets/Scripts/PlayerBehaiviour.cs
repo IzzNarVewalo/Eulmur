@@ -173,7 +173,11 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
 	void OnCollisionEnter2D(Collision2D	other)
 	{
-		
+		if(other.gameObject.tag == "Fallenemy"){
+		Gamedata.Instance.Lives -= 1;
+			UpdateStats ();
+	}
+
 		if(other.gameObject.tag == "Enemy")
 		{
 			Enemy enemy = other.gameObject.GetComponent<Enemy>();
@@ -203,6 +207,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 				OnDeath();
 			}
 		}
+
 	}
 
 
