@@ -12,6 +12,9 @@ TagManager:
   - WandoberesEnde
   - Farbig
   - Wand
+  - Enemy
+  - Platform
+  - Coin
   layers:
   - Default
   - TransparentFX

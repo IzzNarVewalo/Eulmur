@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerBehaiviour : MonoBehaviour, ITR {
     public MoveSettings moveSettings;
@@ -12,6 +13,10 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
 	private TimeReverse trscript;
 
+	public static Text playerStats; //speichert Text
+
+
+
     private void Awake()
     {
         player1Rigidbody = GameObject.FindGameObjectWithTag("Owl").GetComponent<Rigidbody2D>();
@@ -20,6 +25,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
         p1SidewaysInput = p1JumpInput = 0;
         p2velocity = Vector3.zero;
         p2SidewaysInput = p2JumpInput = 0;
+		Gamedata.Instance.Lives = 5; //Leben festlegen
+
     }
 
     void GetPlayer1Input()
@@ -84,6 +91,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
         GetPlayer2Input();
         Run();
         Jump();
+
+
     }
 
 	void FixedUpdate(){
@@ -110,7 +119,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 	void Start(){
 
 		trscript = GetComponent<TimeReverse> ();
-		Debug.Log (GameObject.FindGameObjectsWithTag ("Grenze"));
+		playerStats = GameObject.Find ("PlayerStats").GetComponent<Text> ();
+		UpdateStats ();
 	}
 
 	//fuer TimeReverse
@@ -140,6 +150,98 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 		public Vector2 myPosition;
 		//evtl. brauche mehr
    	}
+
+	void OnDeath()
+	{
+		Gamedata.Instance.Lives -= 1;
+		UpdateStats ();
+		//sollte doch lieber das TimeReversal aufgerufen werden
+		Spawn();
+	}
+
+	void OnCollisionEnter2D(Collision2D	other)
+	{
+		
+		if(other.gameObject.tag == "Enemy")
+		{
+			Enemy enemy = other.gameObject.GetComponent<Enemy>();
+			BoxCollider2D col = other.gameObject.GetComponent<BoxCollider2D>();
+			BoxCollider2D mycol = this.gameObject.GetComponent<BoxCollider2D>();
+
+			if(enemy.invincible)
+			{
+				OnDeath();
+			}
+			else
+				if(mycol.bounds.center.y - mycol.bounds.extents.y > col.bounds.center.y + 0.5f * 
+					col.bounds.extents.y)
+				{
+					if(this.gameObject.tag == "Owl"){
+
+						JumpedOnEnemy1(enemy.bumpSpeed);
+					}
+					if(this.gameObject.tag == "Lemur"){
+						JumpedOnEnemy2(enemy.bumpSpeed);
+					}
+
+					enemy.OnDeath();
+				}
+			else
+			{
+				OnDeath();
+			}
+		}
+	}
+
+
+	void JumpedOnEnemy1(float bumpSpeed)
+	{
+		
+		player1Rigidbody.velocity = new Vector2 (player1Rigidbody.velocity.x, bumpSpeed);
+
+	}
+
+	void JumpedOnEnemy2(float bumpSpeed)
+	{
+
+		player2Rigidbody.velocity = new Vector2 (player2Rigidbody.velocity.x, bumpSpeed);
+	}
+
+
+	void OnTriggerEnter2D(Collider2D other){
+
+		if (other.tag == "Deathzone") {
+			Gamedata.Instance.Lives -= 1;
+			OnDeathSpieler ();
+			UpdateStats ();
+		}
+
+		if (other.tag == "Coin") {
+			
+			Gamedata.Instance.Score += 10;
+			Destroy(other.gameObject);
+			UpdateStats ();
+		}
+	}
+
+	//wenn Spieler Deathzone berührt, so wird der TimeReverse aktiviert
+
+	void OnDeathSpieler(){
+		Gamedata.Instance.Lives -= 1;
+		UpdateStats ();
+		//TimeReverse wird aktiviert -> soll für alle gelten
+	}
+
+	public static void UpdateStats() 
+	{ 
+		playerStats.text = "Score: " + Gamedata.Instance.Score.ToString()
+			 // ToString: zuerst ist e snur eine zahl, aber wir wollen einen string
+			+ "\nLives: " + Gamedata.Instance.Lives.ToString(); 
+		playerStats.text = "Score: " + Gamedata.Instance.Score.ToString()
+			+ "\nLives: " +Gamedata.Instance.Lives.ToString(); 
+
+	} 
+
     
 }
 

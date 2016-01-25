@@ -19,44 +19,51 @@ public class die_Farbe_aenderte_Platform : MonoBehaviour {
 	//wenn jemand auf die Platte draufspringt
 	void OnCollisionEnter2D(Collision2D other){
 
-		if(mitzaehlvariable == 0){
+		BoxCollider2D col = this.gameObject.GetComponent<BoxCollider2D>();
+		BoxCollider2D mycol = other.gameObject.GetComponent<BoxCollider2D>();
 
-			Renderer rend = this.gameObject.GetComponent<Renderer> ();
 
-			rend.material.SetColor ("_Color",Color.blue);
+		if (mycol.bounds.center.y - mycol.bounds.extents.y > col.bounds.center.y + 0.5f *
+		   col.bounds.extents.y) {
 
-			rot = false;
-			mitzaehlvariable++;
+			if (mitzaehlvariable == 0) {
 
-			GameObject.FindGameObjectWithTag ("Wand").GetComponent<bewege_Wand> ().runter();
+				Renderer rend = this.gameObject.GetComponent<Renderer> ();
 
-			return;
+				rend.material.SetColor ("_Color", Color.blue);
+
+				rot = false;
+				mitzaehlvariable++;
+
+				GameObject.FindGameObjectWithTag ("Wand").GetComponent<bewege_Wand> ().runter ();
+
+				return;
+			}
+
+			if (mitzaehlvariable == 1) {
+
+				Renderer rend = this.gameObject.GetComponent<Renderer> ();
+
+				rend.material.SetColor ("_Color", Color.magenta);
+
+				mitzaehlvariable++;
+				rot = false;
+
+				return;
+			}
+
+
+			if (mitzaehlvariable == 2) {
+
+				Renderer rend = this.gameObject.GetComponent<Renderer> ();
+
+				rend.material.SetColor ("_Color", Color.red);
+				rot = true;
+				GameObject.FindGameObjectWithTag ("Wand").GetComponent<bewege_Wand> ().hoch ();
+				mitzaehlvariable = 0;
+			}
+
+
 		}
-
-		if(mitzaehlvariable == 1){
-
-			Renderer rend = this.gameObject.GetComponent<Renderer> ();
-
-			rend.material.SetColor ("_Color",Color.magenta);
-
-			mitzaehlvariable++;
-			rot = false;
-
-			return;
-		}
-
-
-		if(mitzaehlvariable == 2){
-
-			Renderer rend = this.gameObject.GetComponent<Renderer> ();
-
-			rend.material.SetColor ("_Color",Color.red);
-			rot = true;
-			GameObject.FindGameObjectWithTag ("Wand").GetComponent<bewege_Wand> ().hoch();
-			mitzaehlvariable = 0;
-		}
-
-
-
 	}
 }
