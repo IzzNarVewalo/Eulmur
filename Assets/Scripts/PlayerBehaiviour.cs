@@ -43,8 +43,20 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
     void Run()
     {
-        p1velocity = new Vector2(p1SidewaysInput * moveSettings.RunVelocity, player1Rigidbody.velocity.y);
-        p2velocity = new Vector2(p2SidewaysInput * moveSettings.RunVelocity, player2Rigidbody.velocity.y);
+        Debug.Log(Camera.current.transform.position.x);
+        if (player1Rigidbody.transform.position.x < Camera.current.transform.position.x - 8)
+            player1Rigidbody.transform.position = new Vector2(Camera.current.transform.position.x - 8, player1Rigidbody.transform.position.y);
+        else if (player1Rigidbody.transform.position.x > Camera.current.transform.position.x + 8)
+            player1Rigidbody.transform.position = new Vector2(Camera.current.transform.position.x + 8, player1Rigidbody.transform.position.y);
+       else p1velocity = new Vector2(p1SidewaysInput * moveSettings.RunVelocity, player1Rigidbody.velocity.y);
+
+        if (player2Rigidbody.transform.position.x < Camera.current.transform.position.x - 8)
+            player2Rigidbody.transform.position = new Vector2(Camera.current.transform.position.x - 8, player2Rigidbody.transform.position.y);
+        else if (player2Rigidbody.transform.position.x > Camera.current.transform.position.x + 8)
+            player2Rigidbody.transform.position = new Vector2(Camera.current.transform.position.x + 8, player2Rigidbody.transform.position.y);
+
+       else  p2velocity = new Vector2(p2SidewaysInput * moveSettings.RunVelocity, player2Rigidbody.velocity.y);
+
         player1Rigidbody.velocity = transform.TransformDirection(p1velocity);
         player2Rigidbody.velocity = transform.TransformDirection(p2velocity);
     }
