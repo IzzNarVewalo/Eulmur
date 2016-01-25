@@ -15,6 +15,7 @@ TagManager:
   - Enemy
   - Platform
   - Coin
+  - Herz
   layers:
   - Default
   - TransparentFX

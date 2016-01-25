@@ -43,7 +43,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
     void Run()
     {
-        Debug.Log(Camera.current.transform.position.x);
+        //Debug.Log(Camera.current.transform.position.x);
         if (player1Rigidbody.transform.position.x < Camera.current.transform.position.x - 8)
             player1Rigidbody.transform.position = new Vector2(Camera.current.transform.position.x - 8, player1Rigidbody.transform.position.y);
         else if (player1Rigidbody.transform.position.x > Camera.current.transform.position.x + 8)
@@ -231,6 +231,13 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 		if (other.tag == "Coin") {
 			
 			Gamedata.Instance.Score += 10;
+			Destroy(other.gameObject);
+			UpdateStats ();
+		}
+
+		if (other.tag == "Herz") {
+
+			Gamedata.Instance.Lives += 1;
 			Destroy(other.gameObject);
 			UpdateStats ();
 		}
