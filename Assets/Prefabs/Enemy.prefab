@@ -12,6 +12,7 @@ GameObject:
   - 61: {fileID: 6178270}
   - 50: {fileID: 5080078}
   - 114: {fileID: 11421134}
+  - 114: {fileID: 11468220}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -77,6 +78,17 @@ MonoBehaviour:
   bumpSpeed: 7
   variablen:
     currentSpeed: 0.7
+--- !u!114 &11468220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af42448e98e27842b53f2c3e4141d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21223030
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -132,6 +144,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UsedByEffector
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

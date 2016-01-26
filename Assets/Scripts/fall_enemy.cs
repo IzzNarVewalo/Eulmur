@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class fall_enemy : MonoBehaviour {
+public class fall_enemy : MonoBehaviour, ITR {
 
 	public bool invincible;
 	public float bumpSpeed;
 	public Variablen variablen;
+
+	private TimeReverse trscript;
 
 	IEnumerator FallDown() { 
 
@@ -16,7 +18,7 @@ public class fall_enemy : MonoBehaviour {
 	}
 
 	void Start(){
-
+		trscript = GetComponent<TimeReverse> ();
 		//immer wenn IEnumerator aufrufen, weil nicht normale Methode, sondern mit Wartezeit
 		StartCoroutine(FallDown ());
 
@@ -24,7 +26,8 @@ public class fall_enemy : MonoBehaviour {
 
 
 	void Update(){
-
+		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
+			return;
 
 		float amtToMove = variablen.currentSpeed * Time.deltaTime; 
 
@@ -47,12 +50,32 @@ public class fall_enemy : MonoBehaviour {
 	}
 
 
+	//fuer TimeReverse
+	#region ITR implementation
+	public void SaveTRObject ()
+	{
+		MyStatus status = new MyStatus();
+		status.myPosition = transform.position;
+		//status.myRotation = transform.rotation;, gibts doch nicht, oder?
+		trscript.PushTRObject (status);
+		this.GetComponent<Rigidbody2D>().isKinematic = false;
 
-	/*void OnTriggerEnter2D(Collider2D other){
+	}
 
-		if (other.tag == "DeathZone") {
-			
+	public void LoadTRObject (TRObject trobject)
+	{
+		MyStatus newStatus = (MyStatus)trobject;
+		transform.position = newStatus.myPosition;
+		//transform.rotation = newStatus.myRotation;
+		this.GetComponent<Rigidbody2D>().isKinematic = true;
 
-		}
-	}*/
+	}
+	#endregion
+
+	private class MyStatus: TRObject
+	{
+		public Vector2 myPosition;
+		//evtl. brauche mehr
+	}
+
 }

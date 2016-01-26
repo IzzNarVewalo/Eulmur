@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class TimeReverse : MonoBehaviour {
 
 	//private Stack<TRObject> objectsOnStack = new Stack<TRObject>();
-	private CircularBuffer objectsInCircularBuffer = new CircularBuffer(1000);
+	private CircularBuffer objectsInCircularBuffer = new CircularBuffer(100000);
 
 	private ITR otherScript;
 	void Start ()

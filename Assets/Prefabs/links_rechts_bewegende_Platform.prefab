@@ -12,6 +12,7 @@ GameObject:
   - 61: {fileID: 6108978}
   - 114: {fileID: 11493220}
   - 50: {fileID: 5024548}
+  - 114: {fileID: 11475224}
   m_Layer: 0
   m_Name: links_rechts_bewegende_Platform
   m_TagString: Platform
@@ -62,6 +63,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 2.8, y: 2.24}
+--- !u!114 &11475224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150566}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af42448e98e27842b53f2c3e4141d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11493220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,6 +135,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

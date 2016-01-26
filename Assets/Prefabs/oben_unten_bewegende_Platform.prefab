@@ -12,6 +12,7 @@ GameObject:
   - 61: {fileID: 6173520}
   - 50: {fileID: 5014026}
   - 114: {fileID: 11463628}
+  - 114: {fileID: 11479196}
   m_Layer: 0
   m_Name: oben_unten_bewegende_Platform
   m_TagString: Platform
@@ -75,6 +76,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   variablen:
     currentSpeed: 3
+--- !u!114 &11479196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107956}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af42448e98e27842b53f2c3e4141d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21262080
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -123,6 +135,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

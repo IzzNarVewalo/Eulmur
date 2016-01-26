@@ -165,6 +165,12 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 	{
 		Gamedata.Instance.Lives -= 1;
 		UpdateStats ();
+
+		//wenn schon verloren
+		if(Gamedata.Instance.Lives == 0){
+			Application.LoadLevel ("Verloren");
+
+		}
 		//sollte doch lieber das TimeReversal aufgerufen werden
 		Spawn();
 	}
@@ -174,6 +180,12 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 		if(other.gameObject.tag == "Fallenemy"){
 		Gamedata.Instance.Lives -= 1;
 			UpdateStats ();
+
+			//wenn schon verloren
+			if(Gamedata.Instance.Lives == 0){
+				Application.LoadLevel ("Verloren");
+
+			}
 	}
 
 		if(other.gameObject.tag == "Enemy")
@@ -226,9 +238,9 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 	void OnTriggerEnter2D(Collider2D other){
 
 		if (other.tag == "Deathzone") {
-			Gamedata.Instance.Lives -= 1;
+			
 			OnDeathSpieler ();
-			UpdateStats ();
+
 		}
 
 		if (other.tag == "Coin") {
@@ -251,7 +263,18 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 	void OnDeathSpieler(){
 		Gamedata.Instance.Lives -= 1;
 		UpdateStats ();
-		//TimeReverse wird aktiviert -> soll für alle gelten
+
+		//wenn schon verloren
+		if(Gamedata.Instance.Lives == 0){
+			Application.LoadLevel ("Verloren");
+
+		}
+
+		//TimeReverse wird aktiviert -> soll für Gegner, Platformen und Spieler gelten
+
+
+
+
 	}
 
 	public static void UpdateStats() 
