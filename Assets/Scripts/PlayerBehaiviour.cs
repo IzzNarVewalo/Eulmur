@@ -6,8 +6,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
     public MoveSettings moveSettings;
     public InputSettings inputSettings;
     public Transform spawnPoint;
-    private Rigidbody2D player1Rigidbody, player2Rigidbody;
-    private Vector2 p1velocity, p2velocity;
+    public GameObject Owl, Lemur;
+    private Vector2 owlVelocity, lemurVelocity;
     private float p1SidewaysInput, p2SidewaysInput, p1JumpInput, p2JumpInput;
     public LayerMask Layers;
 
@@ -19,11 +19,11 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
     private void Awake()
     {
-        player1Rigidbody = GameObject.FindGameObjectWithTag("Owl").GetComponent<Rigidbody2D>();
-        player2Rigidbody = GameObject.FindGameObjectWithTag("Lemur").GetComponent<Rigidbody2D>();
-        p1velocity = Vector3.zero;
+        //Owl = Camera.current.GetComponent<cameraScript>().Owl;
+        //Lemur = Camera.current.GetComponent<cameraScript>().Lemur;
+        owlVelocity = Vector3.zero;
         p1SidewaysInput = p1JumpInput = 0;
-        p2velocity = Vector3.zero;
+        lemurVelocity = Vector3.zero;
         p2SidewaysInput = p2JumpInput = 0;
 		Gamedata.Instance.Lives = 5; //Leben festlegen
 
@@ -43,34 +43,32 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
     void Run()
     {
-        //Debug.Log(Camera.current.transform.position.x);
-        if (player1Rigidbody.transform.position.x < Camera.current.transform.position.x - 8)
-            player1Rigidbody.transform.position = new Vector2(Camera.current.transform.position.x - 8, player1Rigidbody.transform.position.y);
-        else if (player1Rigidbody.transform.position.x > Camera.current.transform.position.x + 8)
-            player1Rigidbody.transform.position = new Vector2(Camera.current.transform.position.x + 8, player1Rigidbody.transform.position.y);
-       else p1velocity = new Vector2(p1SidewaysInput * moveSettings.RunVelocity, player1Rigidbody.velocity.y);
+        if (Owl.transform.position.x < Camera.current.transform.position.x - 8)
+            Owl.transform.position = new Vector2(Camera.current.transform.position.x - 8, Owl.transform.position.y);    
+        else if (Owl.transform.position.x > Camera.current.transform.position.x + 8)
+            Owl.transform.position = new Vector2(Camera.current.transform.position.x + 8, Owl.transform.position.y);
+        else
+            Owl.transform.position += transform.right * p1SidewaysInput * Time.deltaTime;
 
-        if (player2Rigidbody.transform.position.x < Camera.current.transform.position.x - 8)
-            player2Rigidbody.transform.position = new Vector2(Camera.current.transform.position.x - 8, player2Rigidbody.transform.position.y);
-        else if (player2Rigidbody.transform.position.x > Camera.current.transform.position.x + 8)
-            player2Rigidbody.transform.position = new Vector2(Camera.current.transform.position.x + 8, player2Rigidbody.transform.position.y);
 
-       else  p2velocity = new Vector2(p2SidewaysInput * moveSettings.RunVelocity, player2Rigidbody.velocity.y);
-
-        player1Rigidbody.velocity = transform.TransformDirection(p1velocity);
-        player2Rigidbody.velocity = transform.TransformDirection(p2velocity);
+        if (Lemur.transform.position.x < Camera.current.transform.position.x - 8)
+            Lemur.transform.position = new Vector2(Camera.current.transform.position.x - 8, Lemur.transform.position.y);
+        else if (Lemur.transform.position.x >=Camera.current.transform.position.x + 8)
+            Lemur.transform.position = new Vector2(Camera.current.transform.position.x + 8, Lemur.transform.position.y);
+        else Lemur.transform.position += transform.right*p2SidewaysInput *Time.deltaTime;
+      
     }
 
     void Jump()
     {
         if (p1JumpInput != 0 && OwlGrounded())
         {
-            player1Rigidbody.AddForce(Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
+            Owl.GetComponent<Rigidbody2D>().AddForce(Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
             // = new Vector2(player1Rigidbody.velocity.x, moveSettings.JumpVelocity);
         }
         if (p2JumpInput != 0 && LemurGrounded())
         {
-            player2Rigidbody.AddForce(Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
+            Lemur.GetComponent<Rigidbody2D>().AddForce(Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
             //player2Rigidbody.velocity = new Vector2(player2Rigidbody.velocity.x, moveSettings.JumpVelocity);
         }
     }
@@ -114,13 +112,13 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
 
 		//hae?????
-		if (!player1Rigidbody.isKinematic && !player2Rigidbody.isKinematic)
+		if (!Owl.GetComponent<Rigidbody2D>().isKinematic && !Lemur.GetComponent<Rigidbody2D>().isKinematic)
 		{
 			Run();
 			Jump();
 		}
 
-		if (!player2Rigidbody.isKinematic)
+		if (!Lemur.GetComponent<Rigidbody2D>().isKinematic)
 		{
 			Run();
 			Jump();
@@ -143,8 +141,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 		status.myPosition = transform.position;
 		//status.myRotation = transform.rotation;, gibts doch nicht, oder?
 		trscript.PushTRObject (status);
-		player2Rigidbody.isKinematic = false;
-		player1Rigidbody.isKinematic = false;
+		Lemur.GetComponent<Rigidbody2D>().isKinematic = false;
+		Owl.GetComponent<Rigidbody2D>().isKinematic = false;
 	}
 
 	public void LoadTRObject (TRObject trobject)
@@ -152,8 +150,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 		MyStatus newStatus = (MyStatus)trobject;
 		transform.position = newStatus.myPosition;
 		//transform.rotation = newStatus.myRotation;
-		player1Rigidbody.isKinematic = true;
-		player2Rigidbody.isKinematic = true;
+		Owl.GetComponent<Rigidbody2D>().isKinematic = true;
+		Lemur.GetComponent<Rigidbody2D>().isKinematic = true;
 	}
 	#endregion
 
@@ -214,14 +212,14 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 	void JumpedOnEnemy1(float bumpSpeed)
 	{
 		
-		player1Rigidbody.velocity = new Vector2 (player1Rigidbody.velocity.x, bumpSpeed);
+		Owl.GetComponent<Rigidbody2D>().velocity = new Vector2 (Owl.GetComponent<Rigidbody2D>().velocity.x, bumpSpeed);
 
 	}
 
 	void JumpedOnEnemy2(float bumpSpeed)
 	{
 
-		player2Rigidbody.velocity = new Vector2 (player2Rigidbody.velocity.x, bumpSpeed);
+		Lemur.GetComponent<Rigidbody2D>().velocity = new Vector2 (Lemur.GetComponent<Rigidbody2D>().velocity.x, bumpSpeed);
 	}
 
 
