@@ -7,10 +7,12 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	public MoveSettings moveSettings;
 	public InputSettings inputSettings;
 	public Transform spawnPoint;
-	public GameObject Owl, Lemur, Camera;
+	public GameObject Owl, Lemur, Camera, customOwl, customLemur;
 	private Vector2 owlVelocity, lemurVelocity;
 	private float p1SidewaysInput, p2SidewaysInput, p1JumpInput, p2JumpInput;
 	public LayerMask Layers;
+
+	public Sprite sprite;
 
 	enum Kostum {nichts, Einhornhorn, Schnurrbart, Krone}
 
@@ -20,6 +22,30 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	//speichert Text
 
 	public bool timereverse;
+
+
+	public void zeige(){
+
+		switch(Kostum)
+		{
+
+		case Kostum.Einhornhorn:
+			customOwl = new GameObject ("einowl");
+			sprite = 
+			//transform.SetParent (customOwl.transform);  
+
+		case Kostum.Schnurrbart:
+
+		case Kostum.Krone: 
+
+		case Kostum.nichts: 
+
+		default:
+			
+		}
+		GameObject.FindGameObjectWithTag("Owl").GetComponent<SpriteRenderer>().sprite = sprite;
+
+	}
 
 	private void Awake ()
 	{
@@ -72,21 +98,15 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		if (p1JumpInput != 0 && OwlGrounded ()) {
 
 
-
-			if (Gamedata.Instance.Food > 0) {
-				Owl.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity*5 * Gamedata.Instance.Food, ForceMode2D.Impulse);
-				Gamedata.Instance.Food -= 1;
-				UpdateStats ();
-
-			} else {
 				Owl.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
 				// = new Vector2(player1Rigidbody.velocity.x, moveSettings.JumpVelocity);
 
+		}else{
 
-			}
-
-
-
+			if (Gamedata.Instance.Food > 0 && p1JumpInput != 0) {
+				Owl.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity * Gamedata.Instance.Food, ForceMode2D.Impulse);
+				Gamedata.Instance.Food -= 1;
+				UpdateStats ();
 
 		}
 		if (p2JumpInput != 0 && LemurGrounded ()) {

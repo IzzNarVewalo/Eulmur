@@ -17,7 +17,8 @@ public class ButtonBehaviour : MonoBehaviour {
 
 
 	public void Einhorn(){
-
+		if (Gamedata.Instance.Score >= 1500) {
+		}
 	}
 
 	//prüfe ob so viel Geld da
@@ -27,20 +28,27 @@ public class ButtonBehaviour : MonoBehaviour {
 	//neuen Sprite laden
 
 	public void Schnurer(){
-
+		if (Gamedata.Instance.Score >= 100) {
+		}
 	}
 
 
 	public void Krone(){
-
+		if (Gamedata.Instance.Score >= 1200) {
+		}
 	}
 
 
 	public void Ueberracshung(){
+		if (Gamedata.Instance.Score >= 850) {
 
+		}
 	}
 
 	public void Herzen(){
+		if (Gamedata.Instance.Score >= 600) {
+		}
+		Gamedata.Instance.Lives += 1;
 	}
 
 }
