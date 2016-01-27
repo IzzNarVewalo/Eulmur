@@ -89,7 +89,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
     public void Spawn()
     {
-        transform.position = spawnPoint.position;
+		GameObject.FindGameObjectWithTag("Owl").transform.position = spawnPoint.position;
+		GameObject.FindGameObjectWithTag("Lemur").transform.position = spawnPoint.position;
     }
 
     // Update is called once per frame
@@ -267,7 +268,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
 		if(other.tag == "Food"){
 			Gamedata.Instance.Food += 1;
-
+			Destroy(other.gameObject);
+			UpdateStats ();
 		}
 
 
