@@ -97,7 +97,7 @@ GameObject:
   - 114: {fileID: 8720936}
   - 114: {fileID: 8720935}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Play Offline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,7 +159,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8720936}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1008782897}
+        m_MethodName: playOffline
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: LoadLink("http://www-1000sunny.de")
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &8720936
@@ -341,7 +352,7 @@ GameObject:
   - 114: {fileID: 580761407}
   - 114: {fileID: 580761406}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: Username
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -776,6 +787,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1008782896}
   - 212: {fileID: 1008782895}
+  - 114: {fileID: 1008782897}
   m_Layer: 0
   m_Name: Eulmur
   m_TagString: Untagged
@@ -825,6 +837,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &1008782897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1008782894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a9c7763b11d014e8c710ca1809bdc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1201702060
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +955,7 @@ GameObject:
   - 114: {fileID: 1293039790}
   - 114: {fileID: 1293039789}
   m_Layer: 5
-  m_Name: InputField (1)
+  m_Name: Password
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1065,7 +1088,7 @@ GameObject:
   - 114: {fileID: 1391236466}
   - 114: {fileID: 1391236465}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Play Online
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1127,7 +1150,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1391236466}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1008782897}
+        m_MethodName: playOnline
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1391236466
@@ -1321,7 +1355,7 @@ GameObject:
   - 114: {fileID: 2022258411}
   - 114: {fileID: 2022258410}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Create Account
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1383,7 +1417,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2022258411}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1008782894}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2022258411
