@@ -1954,7 +1954,7 @@ Transform:
   m_LocalScale: {x: 0.21161518, y: 0.16972545, z: 0.29099926}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 17
 --- !u!212 &293182251
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2052,10 +2052,10 @@ MonoBehaviour:
     PLAYER2_SIDEWAYS_AXIS: Player2Horizontal
     PLAYER2_JUMP_AXIS: Player2Jump
     PLAYER2_CROUCH_AXIS: Player2Crouch
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 973202317}
   Owl: {fileID: 1190576489}
   Lemur: {fileID: 293182249}
-  Camera: {fileID: 0}
+  Camera: {fileID: 318661887}
   Layers:
     serializedVersion: 2
     m_Bits: 0
@@ -5326,6 +5326,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 112
+--- !u!1 &973202316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 973202317}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &973202317
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 973202316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.02, y: 0.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 146
 --- !u!1001 &976554742
 Prefab:
   m_ObjectHideFlags: 0
@@ -6141,10 +6168,10 @@ MonoBehaviour:
     PLAYER2_SIDEWAYS_AXIS: Player2Horizontal
     PLAYER2_JUMP_AXIS: Player2Jump
     PLAYER2_CROUCH_AXIS: Player2Crouch
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 973202317}
   Owl: {fileID: 1190576489}
   Lemur: {fileID: 293182249}
-  Camera: {fileID: 0}
+  Camera: {fileID: 318661887}
   Layers:
     serializedVersion: 2
     m_Bits: 0
@@ -6190,7 +6217,7 @@ Transform:
   m_LocalScale: {x: 0.2366868, y: 0.22034624, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 23
 --- !u!50 &1190576493
 Rigidbody2D:
   serializedVersion: 2

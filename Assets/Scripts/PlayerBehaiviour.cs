@@ -240,6 +240,13 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 	}
 
 
+	void OnCollisionExit2D(Collision2D other){
+		// ich hab viele Infos, will aber nur die vom Object
+		if(other.gameObject.tag	== "Platform" ){
+			this.transform.parent = null;}
+	}
+
+
 	void JumpedOnEnemy1(float bumpSpeed)
 	{
 		
@@ -327,7 +334,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 public class MoveSettings
 {
     public float RunVelocity = 12;
-    public float JumpVelocity = 1f;
+    public float JumpVelocity = 2f;
     public float DistanceToGround = 0.5f;
     public LayerMask Ground;
 }
