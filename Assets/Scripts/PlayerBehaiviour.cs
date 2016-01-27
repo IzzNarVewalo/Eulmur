@@ -32,13 +32,13 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	public bool timereverse;
 
 
-	public static void zeige(){
+	public void zeige(){
 
 		switch(angezogen)
 		{
 
 		case Kostum.Einhornhorn:
-			GameObject.FindGameObjectWithTag ("Owl").GetComponent<SpriteRenderer> ().sprite = spriteOwlEin;
+			Owl.GetComponent<SpriteRenderer> ().sprite = spriteOwlEin;
 			GameObject.FindGameObjectWithTag ("Lemur").GetComponent<SpriteRenderer> ().sprite = spriteLemurEin;
 
 			break;
