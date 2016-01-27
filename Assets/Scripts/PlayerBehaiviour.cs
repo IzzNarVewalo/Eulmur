@@ -27,6 +27,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
         lemurVelocity = Vector3.zero;
         p2SidewaysInput = p2JumpInput = 0;
 		Gamedata.Instance.Lives = 5; //Leben festlegen
+		Gamedata.Instance.Food = 0;
 
     }
 
@@ -321,9 +322,10 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 	{ 
 		playerStats.text = "Score: " + Gamedata.Instance.Score.ToString()
 			 // ToString: zuerst ist e snur eine zahl, aber wir wollen einen string
-			+ "\nLives: " + Gamedata.Instance.Lives.ToString(); 
-		playerStats.text = "Score: " + Gamedata.Instance.Score.ToString()
-			+ "\nLives: " +Gamedata.Instance.Lives.ToString(); 
+			+ "\nLives: " + Gamedata.Instance.Lives.ToString()
+			+ "\nFood: " + Gamedata.Instance.Food.ToString(); 
+		//playerStats.text = "Score: " + Gamedata.Instance.Score.ToString()
+		//	+ "\nLives: " +Gamedata.Instance.Lives.ToString(); 
 
 	} 
 

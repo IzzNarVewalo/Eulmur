@@ -23,6 +23,7 @@ TagManager:
   - Button1
   - Wand1
   - Tuer
+  - Food
   layers:
   - Default
   - TransparentFX
