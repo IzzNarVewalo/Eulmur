@@ -16,4 +16,31 @@ public class ButtonBehaviour : MonoBehaviour {
 	}
 
 
+	public void Einhorn(){
+
+	}
+
+	//prüfe ob so viel Geld da
+
+	//abziehen
+
+	//neuen Sprite laden
+
+	public void Schnurer(){
+
+	}
+
+
+	public void Krone(){
+
+	}
+
+
+	public void Ueberracshung(){
+
+	}
+
+	public void Herzen(){
+	}
+
 }

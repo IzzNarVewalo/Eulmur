@@ -12,6 +12,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	private float p1SidewaysInput, p2SidewaysInput, p1JumpInput, p2JumpInput;
 	public LayerMask Layers;
 
+	enum Kostum {nichts, Einhornhorn, Schnurrbart, Krone}
+
 	private TimeReverse trscript;
 
 	public static Text playerStats;
