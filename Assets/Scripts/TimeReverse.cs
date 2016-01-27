@@ -8,7 +8,9 @@ public class TimeReverse : MonoBehaviour {
 	//private Stack<TRObject> objectsOnStack = new Stack<TRObject>();
 	private CircularBuffer objectsInCircularBuffer = new CircularBuffer(100000);
 
-	private ITR otherScript;
+	private
+	ITR otherScript;
+
 	void Start ()
 	{
 		otherScript= (ITR)gameObject.GetComponent (typeof(ITR));

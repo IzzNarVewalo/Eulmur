@@ -15,7 +15,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
 	public static Text playerStats; //speichert Text
 
-
+	public bool timereverse;
 
     private void Awake()
     {
@@ -131,6 +131,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 		trscript = GetComponent<TimeReverse> ();
 		playerStats = GameObject.Find ("PlayerStats").GetComponent<Text> ();
 		UpdateStats ();
+		timereverse = false;
 	}
 
 	//fuer TimeReverse
@@ -253,6 +254,13 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
 	void OnTriggerEnter2D(Collider2D other){
 
+
+		if (other.tag == "Button1") {
+
+			GameObject.FindGameObjectWithTag("Wand1").GetComponent<WandbewegeKnopf> ().bewegeHoch();
+		}
+
+
 		if (other.tag == "Affengrenze") {
 			gameObject.GetComponent<fall_enemy> ().fallen ();
 		}
@@ -292,11 +300,14 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
 		//TimeReverse wird aktiviert -> soll für Gegner, Platformen und Spieler gelten
 
+		/*timereverse = true;
+		int variable = 0;
+		while(variable < 20){
 
-
-
+		//	gameObject.GetComponent<TimeReverse>().Laden());
+			variable++;
+	}*/
 	}
-
 	public static void UpdateStats() 
 	{ 
 		playerStats.text = "Score: " + Gamedata.Instance.Score.ToString()

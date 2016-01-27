@@ -19,6 +19,9 @@ TagManager:
   - Fallenemy
   - Ground
   - Affengrenze
+  - Button
+  - Button1
+  - Wand1
   layers:
   - Default
   - TransparentFX

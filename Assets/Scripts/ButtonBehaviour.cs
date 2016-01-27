@@ -15,4 +15,5 @@ public class ButtonBehaviour : MonoBehaviour {
 		Gamedata.Instance.Lives = 5;
 	}
 
+
 }
