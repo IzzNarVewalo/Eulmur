@@ -6,7 +6,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
     public MoveSettings moveSettings;
     public InputSettings inputSettings;
     public Transform spawnPoint;
-    public GameObject Owl, Lemur;
+    public GameObject Owl, Lemur, Camera;
     private Vector2 owlVelocity, lemurVelocity;
     private float p1SidewaysInput, p2SidewaysInput, p1JumpInput, p2JumpInput;
     public LayerMask Layers;
@@ -19,8 +19,9 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
     private void Awake()
     {
-        //Owl = Camera.current.GetComponent<cameraScript>().Owl;
-        //Lemur = Camera.current.GetComponent<cameraScript>().Lemur;
+        Camera = GameObject.FindGameObjectWithTag("MainCamera");
+        //Owl = Camera.GetComponent<cameraScript>().Owl;
+        //Lemur = Camera.GetComponent<cameraScript>().Lemur;
         owlVelocity = Vector3.zero;
         p1SidewaysInput = p1JumpInput = 0;
         lemurVelocity = Vector3.zero;
@@ -43,19 +44,19 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
     void Run()
     {
-        if (Owl.transform.position.x < Camera.current.transform.position.x - 8)
-            Owl.transform.position = new Vector2(Camera.current.transform.position.x - 8, Owl.transform.position.y);    
-        else if (Owl.transform.position.x > Camera.current.transform.position.x + 8)
-            Owl.transform.position = new Vector2(Camera.current.transform.position.x + 8, Owl.transform.position.y);
+        if (Owl.transform.position.x < Camera.transform.position.x - 8)
+            Owl.transform.position = new Vector2(Camera.transform.position.x - 8, Owl.transform.position.y);    
+        else if (Owl.transform.position.x > Camera.transform.position.x + 8)
+            Owl.transform.position = new Vector2(Camera.transform.position.x + 8, Owl.transform.position.y);
         else
-            Owl.transform.position += transform.right * p1SidewaysInput * Time.deltaTime;
+            Owl.transform.position += transform.right * p1SidewaysInput * Time.deltaTime * moveSettings.RunVelocity;
 
 
-        if (Lemur.transform.position.x < Camera.current.transform.position.x - 8)
-            Lemur.transform.position = new Vector2(Camera.current.transform.position.x - 8, Lemur.transform.position.y);
-        else if (Lemur.transform.position.x >=Camera.current.transform.position.x + 8)
-            Lemur.transform.position = new Vector2(Camera.current.transform.position.x + 8, Lemur.transform.position.y);
-        else Lemur.transform.position += transform.right*p2SidewaysInput *Time.deltaTime;
+        if (Lemur.transform.position.x < Camera.transform.position.x - 8)
+            Lemur.transform.position = new Vector2(Camera.transform.position.x - 8, Lemur.transform.position.y);
+        else if (Lemur.transform.position.x >=Camera.transform.position.x + 8)
+            Lemur.transform.position = new Vector2(Camera.transform.position.x + 8, Lemur.transform.position.y);
+        else Lemur.transform.position += transform.right*p2SidewaysInput *Time.deltaTime * moveSettings.RunVelocity;
       
     }
 
@@ -99,13 +100,20 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
         GetPlayer1Input();
         GetPlayer2Input();
-        Run();
-        Jump();
-
 
     }
 
-	void FixedUpdate(){
+    void LateUpdate()
+    {
+
+        if (Owl.transform.position.x < Camera.transform.position.x - 8)
+            Owl.transform.position = new Vector2(Camera.transform.position.x - 8, Owl.transform.position.y);
+        else if (Owl.transform.position.x > Camera.transform.position.x + 8)
+            Owl.transform.position = new Vector2(Camera.transform.position.x + 8, Owl.transform.position.y);
+    }
+
+
+    void FixedUpdate(){
 
 		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
 			return;
@@ -113,12 +121,6 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
 		//hae?????
 		if (!Owl.GetComponent<Rigidbody2D>().isKinematic && !Lemur.GetComponent<Rigidbody2D>().isKinematic)
-		{
-			Run();
-			Jump();
-		}
-
-		if (!Lemur.GetComponent<Rigidbody2D>().isKinematic)
 		{
 			Run();
 			Jump();
@@ -267,7 +269,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
 		if (other.tag == "Deathzone") {
 			
-			OnDeathSpieler ();
+			OnDeathSpieler();
 
 		}
 
@@ -292,10 +294,10 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 		Gamedata.Instance.Lives -= 1;
 		UpdateStats ();
 
+		Spawn ();
 		//wenn schon verloren
 		if(Gamedata.Instance.Lives == 0){
 			Application.LoadLevel ("Verloren");
-
 		}
 
 		//TimeReverse wird aktiviert -> soll für Gegner, Platformen und Spieler gelten
