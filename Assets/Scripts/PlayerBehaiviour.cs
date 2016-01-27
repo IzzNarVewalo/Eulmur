@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -7,7 +8,6 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
     public InputSettings inputSettings;
     public Transform spawnPoint;
     public GameObject Owl, Lemur;
-    private Vector2 owlVelocity, lemurVelocity;
     private float p1SidewaysInput, p2SidewaysInput, p1JumpInput, p2JumpInput;
     public LayerMask Layers;
 
@@ -21,12 +21,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
     {
         //Owl = Camera.current.GetComponent<cameraScript>().Owl;
         //Lemur = Camera.current.GetComponent<cameraScript>().Lemur;
-        owlVelocity = Vector3.zero;
-        p1SidewaysInput = p1JumpInput = 0;
-        lemurVelocity = Vector3.zero;
-        p2SidewaysInput = p2JumpInput = 0;
+        p1SidewaysInput = p1JumpInput = p2SidewaysInput = p2JumpInput = 0;
 		Gamedata.Instance.Lives = 5; //Leben festlegen
-
     }
 
     void GetPlayer1Input()
@@ -43,30 +39,26 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
     void Run()
     {
-        if (Owl.transform.position.x < Camera.current.transform.position.x - 8)
-            Owl.transform.position = new Vector2(Camera.current.transform.position.x - 8, Owl.transform.position.y);    
-        else if (Owl.transform.position.x > Camera.current.transform.position.x + 8)
-            Owl.transform.position = new Vector2(Camera.current.transform.position.x + 8, Owl.transform.position.y);
-        else
-            Owl.transform.position += transform.right * p1SidewaysInput * Time.deltaTime;
+        if ( Camera.main.transform.position.x + Camera.main.orthographicSize * 16/9 -1>
+             Owl.transform.position.x)
+        {
+            Owl.transform.Translate(Vector3.right * p1SidewaysInput * Time.deltaTime * moveSettings.RunVelocity, Space.World);
+            Lemur.transform.Translate(Vector3.right * p2SidewaysInput * Time.deltaTime * moveSettings.RunVelocity, Space.World);
+        }
 
-
-        if (Lemur.transform.position.x < Camera.current.transform.position.x - 8)
-            Lemur.transform.position = new Vector2(Camera.current.transform.position.x - 8, Lemur.transform.position.y);
-        else if (Lemur.transform.position.x >=Camera.current.transform.position.x + 8)
-            Lemur.transform.position = new Vector2(Camera.current.transform.position.x + 8, Lemur.transform.position.y);
-        else Lemur.transform.position += transform.right*p2SidewaysInput *Time.deltaTime;
-      
+        //if trans.pos <> camera.pos
+        //trans.pos=camera.pos
+        //else
+        //trans.pos=trans.pos +vector2.right*input*time.dT*runvel
     }
-
     void Jump()
     {
-        if (p1JumpInput != 0 && OwlGrounded())
+        if (Math.Abs(p1JumpInput) >  0  && OwlGrounded())
         {
             Owl.GetComponent<Rigidbody2D>().AddForce(Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
             // = new Vector2(player1Rigidbody.velocity.x, moveSettings.JumpVelocity);
         }
-        if (p2JumpInput != 0 && LemurGrounded())
+        if (Math.Abs(p2JumpInput) > 0 && LemurGrounded())
         {
             Lemur.GetComponent<Rigidbody2D>().AddForce(Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
             //player2Rigidbody.velocity = new Vector2(player2Rigidbody.velocity.x, moveSettings.JumpVelocity);
@@ -75,13 +67,11 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
     bool LemurGrounded()
     {
-
         return Physics2D.Raycast(GameObject.FindGameObjectWithTag("Lemur").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
     }
 
     bool OwlGrounded()
     {
-
         return Physics2D.Raycast(GameObject.FindGameObjectWithTag("Owl").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
     }
 
@@ -99,31 +89,40 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
         GetPlayer1Input();
         GetPlayer2Input();
-        Run();
-        Jump();
+        //Run();
+        //Jump();
 
 
     }
 
+    void LateUpdate()
+    {
+
+        if (Owl.transform.position.x < Camera.current.transform.position.x - 8)
+            Owl.transform.position = new Vector2(Camera.current.transform.position.x - 8, Owl.transform.position.y);
+        else if (Owl.transform.position.x > Camera.current.transform.position.x + 8)
+            Owl.transform.position = new Vector2(Camera.current.transform.position.x + 8, Owl.transform.position.y);
+    }
+
 	void FixedUpdate(){
 
-		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
+        if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
 			return;
 
 
 		//hae?????
-		if (!Owl.GetComponent<Rigidbody2D>().isKinematic && !Lemur.GetComponent<Rigidbody2D>().isKinematic)
+		/*if (!Owl.GetComponent<Rigidbody2D>().isKinematic && !Lemur.GetComponent<Rigidbody2D>().isKinematic)
 		{
 			Run();
 			Jump();
 		}
+        */
 
 		if (!Lemur.GetComponent<Rigidbody2D>().isKinematic)
-		{
-			Run();
+        {
+                Run();
 			Jump();
 		}
-
 	}
 
 	void Start(){
@@ -149,7 +148,6 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 	{
 		MyStatus newStatus = (MyStatus)trobject;
 		transform.position = newStatus.myPosition;
-		//transform.rotation = newStatus.myRotation;
 		Owl.GetComponent<Rigidbody2D>().isKinematic = true;
 		Lemur.GetComponent<Rigidbody2D>().isKinematic = true;
 	}
@@ -280,7 +278,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 	public static void UpdateStats() 
 	{ 
 		playerStats.text = "Score: " + Gamedata.Instance.Score.ToString()
-			 // ToString: zuerst ist e snur eine zahl, aber wir wollen einen string
+			 // ToString: zuerst ist es nur eine zahl, aber wir wollen einen string
 			+ "\nLives: " + Gamedata.Instance.Lives.ToString(); 
 		playerStats.text = "Score: " + Gamedata.Instance.Score.ToString()
 			+ "\nLives: " +Gamedata.Instance.Lives.ToString(); 
@@ -293,7 +291,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 [System.Serializable]
 public class MoveSettings
 {
-    public float RunVelocity = 12;
+    public float RunVelocity = 4f;
     public float JumpVelocity = 1f;
     public float DistanceToGround = 0.5f;
     public LayerMask Ground;
