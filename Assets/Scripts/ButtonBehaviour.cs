@@ -18,6 +18,11 @@ public class ButtonBehaviour : MonoBehaviour {
 
 	public void Einhorn(){
 		if (Gamedata.Instance.Score >= 1500) {
+
+			Gamedata.Instance.Score -= 1500;
+			GameObject.FindGameObjectWithTag("Owl").GetComponent<PlayerBehaiviour> ().angezogen = PlayerBehaiviour.Kostum.Einhornhorn;
+			PlayerBehaiviour.zeige ();
+		
 		}
 	}
 
@@ -29,24 +34,54 @@ public class ButtonBehaviour : MonoBehaviour {
 
 	public void Schnurer(){
 		if (Gamedata.Instance.Score >= 100) {
+
+			Gamedata.Instance.Score -= 100;
+			GameObject.GetComponent<PlayerBehaiviour> ().angezogen = PlayerBehaiviour.Kostum.Schnurrbart;
+			PlayerBehaiviour.zeige ();
 		}
 	}
 
 
 	public void Krone(){
 		if (Gamedata.Instance.Score >= 1200) {
+
+			Gamedata.Instance.Score -= 1200;
+			GameObject.GetComponent<PlayerBehaiviour> ().angezogen = PlayerBehaiviour.Kostum.Krone;
+			PlayerBehaiviour.zeige ();
+
 		}
 	}
 
 
-	public void Ueberracshung(){
+	public void Ueberraschung(){
 		if (Gamedata.Instance.Score >= 850) {
 
+			Gamedata.Instance.Score -= 850;
+			int zahl = Mathf.Round (Random.value * 3.0f);
+
+			switch (zahl) {
+			case 0:
+				GameObject.GetComponent<PlayerBehaiviour> ().angezogen = PlayerBehaiviour.Kostum.Einhornhorn;
+				break;
+			case 1:
+				GameObject.GetComponent<PlayerBehaiviour> ().angezogen = PlayerBehaiviour.Kostum.Schnurrbart;
+				break;
+				case 2: GameObject.GetComponent<PlayerBehaiviour> ().angezogen = PlayerBehaiviour.Kostum.Krone;
+				break;
+			default: Gamedata.Instance.Lives += 1;
+				break;
+			}
+
+			PlayerBehaiviour.zeige ();
 		}
 	}
 
 	public void Herzen(){
 		if (Gamedata.Instance.Score >= 600) {
+
+
+			Gamedata.Instance.Score -= 600;
+		
 		}
 		Gamedata.Instance.Lives += 1;
 	}

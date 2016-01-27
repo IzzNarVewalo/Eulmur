@@ -7,15 +7,23 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	public MoveSettings moveSettings;
 	public InputSettings inputSettings;
 	public Transform spawnPoint;
-	public GameObject Owl, Lemur, Camera, customOwl, customLemur;
+	public GameObject Owl, Lemur, Camera;
 	private Vector2 owlVelocity, lemurVelocity;
 	private float p1SidewaysInput, p2SidewaysInput, p1JumpInput, p2JumpInput;
 	public LayerMask Layers;
 
-	public Sprite sprite;
+	public Sprite spriteOwlEin;
+	public Sprite spriteOwlSchnurr;
+	public Sprite spriteOwlKron;
+	public Sprite spriteOwlnichts;
+	public Sprite spriteLemurEin;
+	public Sprite spriteLemurSchnurr;
+	public Sprite spriteLemurKron;
+	public Sprite spriteLemurnichts;
 
-	enum Kostum {nichts, Einhornhorn, Schnurrbart, Krone}
+	public enum Kostum {nichts, Einhornhorn, Schnurrbart, Krone};
 
+	public static Kostum angezogen = Kostum.nichts;
 	private TimeReverse trscript;
 
 	public static Text playerStats;
@@ -24,26 +32,38 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	public bool timereverse;
 
 
-	public void zeige(){
+	public static void zeige(){
 
-		switch(Kostum)
+		switch(angezogen)
 		{
 
 		case Kostum.Einhornhorn:
-			customOwl = new GameObject ("einowl");
-			sprite = 
+			GameObject.FindGameObjectWithTag ("Owl").GetComponent<SpriteRenderer> ().sprite = spriteOwlEin;
+			GameObject.FindGameObjectWithTag ("Lemur").GetComponent<SpriteRenderer> ().sprite = spriteLemurEin;
+
+			break;
 			//transform.SetParent (customOwl.transform);  
 
 		case Kostum.Schnurrbart:
 
+			GameObject.FindGameObjectWithTag ("Owl").GetComponent<SpriteRenderer> ().sprite = spriteOwlSchnurr;
+			GameObject.FindGameObjectWithTag ("Lemur").GetComponent<SpriteRenderer> ().sprite = spriteLemurSchnurr;
+
+			break;
 		case Kostum.Krone: 
+
+			GameObject.FindGameObjectWithTag ("Owl").GetComponent<SpriteRenderer> ().sprite = spriteOwlKron;
+			GameObject.FindGameObjectWithTag ("Lemur").GetComponent<SpriteRenderer> ().sprite = spriteLemurKron;
+			break;
 
 		case Kostum.nichts: 
 
+			GameObject.FindGameObjectWithTag ("Owl").GetComponent<SpriteRenderer> ().sprite = spriteOwlnichts;
+			GameObject.FindGameObjectWithTag ("Lemur").GetComponent<SpriteRenderer> ().sprite = spriteLemurnichts;
+			break;
 		default:
-			
+			break;
 		}
-		GameObject.FindGameObjectWithTag("Owl").GetComponent<SpriteRenderer>().sprite = sprite;
 
 	}
 
@@ -98,20 +118,21 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		if (p1JumpInput != 0 && OwlGrounded ()) {
 
 
-				Owl.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
-				// = new Vector2(player1Rigidbody.velocity.x, moveSettings.JumpVelocity);
+			Owl.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
+			// = new Vector2(player1Rigidbody.velocity.x, moveSettings.JumpVelocity);
 
-		}else{
+		} else {
 
 			if (Gamedata.Instance.Food > 0 && p1JumpInput != 0) {
 				Owl.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity * Gamedata.Instance.Food, ForceMode2D.Impulse);
 				Gamedata.Instance.Food -= 1;
 				UpdateStats ();
 
-		}
-		if (p2JumpInput != 0 && LemurGrounded ()) {
-			Lemur.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
-			//player2Rigidbody.velocity = new Vector2(player2Rigidbody.velocity.x, moveSettings.JumpVelocity);
+			}
+			if (p2JumpInput != 0 && LemurGrounded ()) {
+				Lemur.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
+				//player2Rigidbody.velocity = new Vector2(player2Rigidbody.velocity.x, moveSettings.JumpVelocity);
+			}
 		}
 	}
 
@@ -178,6 +199,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		playerStats = GameObject.Find ("PlayerStats").GetComponent<Text> ();
 		UpdateStats ();
 		timereverse = false;
+
 	}
 
 	//fuer TimeReverse
