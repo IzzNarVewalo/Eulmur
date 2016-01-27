@@ -20,8 +20,8 @@ public class ButtonBehaviour : MonoBehaviour {
 		if (Gamedata.Instance.Score >= 1500) {
 
 			Gamedata.Instance.Score -= 1500;
-			PlayerBehaiviour.angezogen = PlayerBehaiviour.Kostum.Einhornhorn;
-			PlayerBehaiviour.zeige ();
+			PlayerBehaiviour.angezogen = gameObject.GetComponent<PlayerBehaiviour>().Kostum.Einhornhorn;
+			gameObject.GetComponent<PlayerBehaiviour>().zeige ();
 		
 		}
 	}
@@ -36,8 +36,8 @@ public class ButtonBehaviour : MonoBehaviour {
 		if (Gamedata.Instance.Score >= 100) {
 
 			Gamedata.Instance.Score -= 100;
-			GameObject.GetComponent<PlayerBehaiviour> ().angezogen = PlayerBehaiviour.Kostum.Schnurrbart;
-			PlayerBehaiviour.zeige ();
+			GameObject.GetComponent<PlayerBehaiviour> ().angezogen = gameObject.GetComponent<PlayerBehaiviour>().Kostum.Schnurrbart;
+			gameObject.GetComponent<PlayerBehaiviour>().zeige ();
 		}
 	}
 
@@ -46,8 +46,8 @@ public class ButtonBehaviour : MonoBehaviour {
 		if (Gamedata.Instance.Score >= 1200) {
 
 			Gamedata.Instance.Score -= 1200;
-			GameObject.GetComponent<PlayerBehaiviour> ().angezogen = PlayerBehaiviour.Kostum.Krone;
-			PlayerBehaiviour.zeige ();
+			GameObject.GetComponent<PlayerBehaiviour> ().angezogen = gameObject.GetComponent<PlayerBehaiviour>().Kostum.Krone;
+			gameObject.GetComponent<PlayerBehaiviour>().zeige ();
 
 		}
 	}
@@ -61,18 +61,18 @@ public class ButtonBehaviour : MonoBehaviour {
 
 			switch (zahl) {
 			case 0:
-				GameObject.GetComponent<PlayerBehaiviour> ().angezogen = PlayerBehaiviour.Kostum.Einhornhorn;
+				GameObject.GetComponent<PlayerBehaiviour> ().angezogen = gameObject.GetComponent<PlayerBehaiviour>().Kostum.Einhornhorn;
 				break;
 			case 1:
-				GameObject.GetComponent<PlayerBehaiviour> ().angezogen = PlayerBehaiviour.Kostum.Schnurrbart;
+				GameObject.GetComponent<PlayerBehaiviour> ().angezogen = gameObject.GetComponent<PlayerBehaiviour>().Kostum.Schnurrbart;
 				break;
-				case 2: GameObject.GetComponent<PlayerBehaiviour> ().angezogen = PlayerBehaiviour.Kostum.Krone;
+			case 2: GameObject.GetComponent<PlayerBehaiviour> ().angezogen = gameObject.GetComponent<PlayerBehaiviour>().Kostum.Krone;
 				break;
 			default: Gamedata.Instance.Lives += 1;
 				break;
 			}
 
-			PlayerBehaiviour.zeige ();
+			gameObject.GetComponent<PlayerBehaiviour>().zeige ();
 		}
 	}
 
