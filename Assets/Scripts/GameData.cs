@@ -52,6 +52,11 @@ public class Gamedata
 		set;//wenn set weg, dann schreibgeschützt
 	}
 
+	public int Food {
+		get;//wenn get weg, dann lesegeschützt
+		set;//wenn set weg, dann schreibgeschützt
+	}
+
 
 	//pausieren Variable
 	public bool Paused {
