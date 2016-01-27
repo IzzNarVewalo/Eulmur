@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour, ITR {
 		status.myPosition = transform.position;
 		//status.myRotation = transform.rotation;, gibts doch nicht, oder?
 		trscript.PushTRObject (status);
-		//this.GetComponent<Rigidbody2D>().isKinematic = false;
+		this.GetComponent<Rigidbody2D>().isKinematic = false;
 
 	}
 

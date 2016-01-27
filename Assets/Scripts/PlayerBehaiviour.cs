@@ -177,6 +177,22 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
 	void OnCollisionEnter2D(Collision2D	other)
 	{
+
+		if (other.gameObject.tag == "Platform") {  //tag von der sich bewegenden Plattform
+
+
+			//aktuelles Objekt(this. wichtig wenn mehrere Player), weilnicht static kann ich mehrere Player haben
+
+			//             werde Child von dem was ich grad berühre
+
+			//this.transform.parent = collision.transform;
+
+			this.transform.SetParent(other.transform);  
+			//                        das mit was ich colliediere wird Elternteil
+			//              ist eine Methode
+		}
+
+
 		if(other.gameObject.tag == "Fallenemy"){
 		Gamedata.Instance.Lives -= 1;
 			UpdateStats ();
