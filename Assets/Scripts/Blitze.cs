@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Blitze : MonoBehaviour {
 
+	float zahl = Random.value;
+
 	// Use this for initialization
 	void Start () {
 		StartCoroutine (blitzen ());
@@ -16,10 +18,8 @@ public class Blitze : MonoBehaviour {
 			GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled;
 
 
-			yield return new WaitForSeconds(2f);//wartezeit, wenn 0:würde zu schnell blinken
-
+			yield return new WaitForSeconds(zahl * 2);//wartezeit, wenn 0:würde zu schnell blinken
 		}
-
 
 	}
 

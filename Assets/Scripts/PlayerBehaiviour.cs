@@ -23,7 +23,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 	public enum Kostum {nichts, Einhornhorn, Schnurrbart, Krone};
 
-	public Kostum angezogen = Kostum.nichts;
+	public static Kostum angezogen = Kostum.nichts;
 	private TimeReverse trscript;
 
 	public static Text playerStats;

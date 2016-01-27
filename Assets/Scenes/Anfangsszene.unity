@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 156320364}
   - 212: {fileID: 156320363}
+  - 114: {fileID: 156320365}
   m_Layer: 0
   m_Name: Blitze (1)
   m_TagString: Untagged
@@ -143,6 +144,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &156320365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 156320362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3457a51a4bb59ad4185b2559649ac454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &192951310
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +250,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 510586265}
   - 212: {fileID: 510586264}
+  - 114: {fileID: 510586266}
   m_Layer: 0
   m_Name: Blitze
   m_TagString: Untagged
@@ -282,11 +295,22 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 510586263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 1.6076968, z: 0}
+  m_LocalPosition: {x: -0.04, y: 2.17, z: 0}
   m_LocalScale: {x: 0.44890627, y: 0.43749955, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &510586266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 510586263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3457a51a4bb59ad4185b2559649ac454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &527871796
 GameObject:
   m_ObjectHideFlags: 0
