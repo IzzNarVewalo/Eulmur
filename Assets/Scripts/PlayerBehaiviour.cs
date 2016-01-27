@@ -2,135 +2,155 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class PlayerBehaiviour : MonoBehaviour, ITR {
-    public MoveSettings moveSettings;
-    public InputSettings inputSettings;
-    public Transform spawnPoint;
-    public GameObject Owl, Lemur, Camera;
-    private Vector2 owlVelocity, lemurVelocity;
-    private float p1SidewaysInput, p2SidewaysInput, p1JumpInput, p2JumpInput;
-    public LayerMask Layers;
+public class PlayerBehaiviour : MonoBehaviour, ITR
+{
+	public MoveSettings moveSettings;
+	public InputSettings inputSettings;
+	public Transform spawnPoint;
+	public GameObject Owl, Lemur, Camera;
+	private Vector2 owlVelocity, lemurVelocity;
+	private float p1SidewaysInput, p2SidewaysInput, p1JumpInput, p2JumpInput;
+	public LayerMask Layers;
 
 	private TimeReverse trscript;
 
-	public static Text playerStats; //speichert Text
+	public static Text playerStats;
+	//speichert Text
 
 	public bool timereverse;
 
-    private void Awake()
-    {
-        Camera = GameObject.FindGameObjectWithTag("MainCamera");
-        //Owl = Camera.GetComponent<cameraScript>().Owl;
-        //Lemur = Camera.GetComponent<cameraScript>().Lemur;
-        owlVelocity = Vector3.zero;
-        p1SidewaysInput = p1JumpInput = 0;
-        lemurVelocity = Vector3.zero;
-        p2SidewaysInput = p2JumpInput = 0;
+	private void Awake ()
+	{
+		Camera = GameObject.FindGameObjectWithTag ("MainCamera");
+		//Owl = Camera.GetComponent<cameraScript>().Owl;
+		//Lemur = Camera.GetComponent<cameraScript>().Lemur;
+		owlVelocity = Vector3.zero;
+		p1SidewaysInput = p1JumpInput = 0;
+		lemurVelocity = Vector3.zero;
+		p2SidewaysInput = p2JumpInput = 0;
 		Gamedata.Instance.Lives = 5; //Leben festlegen
 		Gamedata.Instance.Food = 0;
 
-    }
+	}
 
-    void GetPlayer1Input()
-    {
-        p1SidewaysInput = Input.GetAxis(inputSettings.PLAYER1_SIDEWAYS_AXIS);
-        p1JumpInput = Input.GetAxisRaw(inputSettings.PLAYER1_JUMP_AXIS);
-    }
+	void GetPlayer1Input ()
+	{
+		p1SidewaysInput = Input.GetAxis (inputSettings.PLAYER1_SIDEWAYS_AXIS);
+		p1JumpInput = Input.GetAxisRaw (inputSettings.PLAYER1_JUMP_AXIS);
+	}
 
-    void GetPlayer2Input()
-    {
-        p2SidewaysInput = Input.GetAxis(inputSettings.PLAYER2_SIDEWAYS_AXIS);
-        p2JumpInput = Input.GetAxisRaw(inputSettings.PLAYER2_JUMP_AXIS);
-    }
+	void GetPlayer2Input ()
+	{
+		p2SidewaysInput = Input.GetAxis (inputSettings.PLAYER2_SIDEWAYS_AXIS);
+		p2JumpInput = Input.GetAxisRaw (inputSettings.PLAYER2_JUMP_AXIS);
+	}
 
-    void Run()
-    {
-        if (Owl.transform.position.x < Camera.transform.position.x - 8)
-            Owl.transform.position = new Vector2(Camera.transform.position.x - 8, Owl.transform.position.y);    
-        else if (Owl.transform.position.x > Camera.transform.position.x + 8)
-            Owl.transform.position = new Vector2(Camera.transform.position.x + 8, Owl.transform.position.y);
-        else
-            Owl.transform.position += transform.right * p1SidewaysInput * Time.deltaTime * moveSettings.RunVelocity;
+	void Run ()
+	{
+		if (Owl.transform.position.x < Camera.transform.position.x - 8)
+			Owl.transform.position = new Vector2 (Camera.transform.position.x - 8, Owl.transform.position.y);
+		else if (Owl.transform.position.x > Camera.transform.position.x + 8)
+			Owl.transform.position = new Vector2 (Camera.transform.position.x + 8, Owl.transform.position.y);
+		else
+			Owl.transform.position += transform.right * p1SidewaysInput * Time.deltaTime * moveSettings.RunVelocity;
 
 
-        if (Lemur.transform.position.x < Camera.transform.position.x - 8)
-            Lemur.transform.position = new Vector2(Camera.transform.position.x - 8, Lemur.transform.position.y);
-        else if (Lemur.transform.position.x >=Camera.transform.position.x + 8)
-            Lemur.transform.position = new Vector2(Camera.transform.position.x + 8, Lemur.transform.position.y);
-        else Lemur.transform.position += transform.right*p2SidewaysInput *Time.deltaTime * moveSettings.RunVelocity;
+		if (Lemur.transform.position.x < Camera.transform.position.x - 8)
+			Lemur.transform.position = new Vector2 (Camera.transform.position.x - 8, Lemur.transform.position.y);
+		else if (Lemur.transform.position.x >= Camera.transform.position.x + 8)
+			Lemur.transform.position = new Vector2 (Camera.transform.position.x + 8, Lemur.transform.position.y);
+		else
+			Lemur.transform.position += transform.right * p2SidewaysInput * Time.deltaTime * moveSettings.RunVelocity;
       
-    }
+	}
 
-    void Jump()
-    {
-        if (p1JumpInput != 0 && OwlGrounded())
-        {
-            Owl.GetComponent<Rigidbody2D>().AddForce(Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
-            // = new Vector2(player1Rigidbody.velocity.x, moveSettings.JumpVelocity);
-        }
-        if (p2JumpInput != 0 && LemurGrounded())
-        {
-            Lemur.GetComponent<Rigidbody2D>().AddForce(Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
-            //player2Rigidbody.velocity = new Vector2(player2Rigidbody.velocity.x, moveSettings.JumpVelocity);
-        }
-    }
-
-    bool LemurGrounded()
-    {
-
-        return Physics2D.Raycast(GameObject.FindGameObjectWithTag("Lemur").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
-    }
-
-    bool OwlGrounded()
-    {
-
-        return Physics2D.Raycast(GameObject.FindGameObjectWithTag("Owl").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
-    }
-
-    public void Spawn()
-    {
-		GameObject.FindGameObjectWithTag("Owl").transform.position = spawnPoint.position;
-		GameObject.FindGameObjectWithTag("Lemur").transform.position = spawnPoint.position;
-    }
-
-    // Update is called once per frame
-    void Update () {
-        //Debug.Log(p1JumpInput);
-
-		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
-		return;
-
-        GetPlayer1Input();
-        GetPlayer2Input();
-
-    }
-
-    void LateUpdate()
-    {
-
-        if (Owl.transform.position.x < Camera.transform.position.x - 8)
-            Owl.transform.position = new Vector2(Camera.transform.position.x - 8, Owl.transform.position.y);
-        else if (Owl.transform.position.x > Camera.transform.position.x + 8)
-            Owl.transform.position = new Vector2(Camera.transform.position.x + 8, Owl.transform.position.y);
-    }
+	void Jump ()
+	{
+		//jump abhängig vom food
+		if (p1JumpInput != 0 && OwlGrounded ()) {
 
 
-    void FixedUpdate(){
 
-		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
+			if (Gamedata.Instance.Food > 0) {
+				Owl.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity*5 * Gamedata.Instance.Food, ForceMode2D.Impulse);
+				Gamedata.Instance.Food -= 1;
+				UpdateStats ();
+
+			} else {
+				Owl.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
+				// = new Vector2(player1Rigidbody.velocity.x, moveSettings.JumpVelocity);
+
+
+			}
+
+
+
+
+		}
+		if (p2JumpInput != 0 && LemurGrounded ()) {
+			Lemur.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
+			//player2Rigidbody.velocity = new Vector2(player2Rigidbody.velocity.x, moveSettings.JumpVelocity);
+		}
+	}
+
+	bool LemurGrounded ()
+	{
+
+		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
+	}
+
+	bool OwlGrounded ()
+	{
+
+		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Owl").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
+	}
+
+	public void Spawn ()
+	{
+		GameObject.FindGameObjectWithTag ("Owl").transform.position = spawnPoint.position;
+		GameObject.FindGameObjectWithTag ("Lemur").transform.position = spawnPoint.position;
+	}
+
+	// Update is called once per frame
+	void Update ()
+	{
+		//Debug.Log(p1JumpInput);
+
+		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse> () != null)
+			return;
+
+		GetPlayer1Input ();
+		GetPlayer2Input ();
+
+	}
+
+	void LateUpdate ()
+	{
+
+		if (Owl.transform.position.x < Camera.transform.position.x - 8)
+			Owl.transform.position = new Vector2 (Camera.transform.position.x - 8, Owl.transform.position.y);
+		else if (Owl.transform.position.x > Camera.transform.position.x + 8)
+			Owl.transform.position = new Vector2 (Camera.transform.position.x + 8, Owl.transform.position.y);
+	}
+
+
+	void FixedUpdate ()
+	{
+
+		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse> () != null)
 			return;
 
 
 		//hae?????
-		if (!Owl.GetComponent<Rigidbody2D>().isKinematic && !Lemur.GetComponent<Rigidbody2D>().isKinematic)
-		{
-			Run();
-			Jump();
+		if (!Owl.GetComponent<Rigidbody2D> ().isKinematic && !Lemur.GetComponent<Rigidbody2D> ().isKinematic) {
+			Run ();
+			Jump ();
 		}
 
 	}
 
-	void Start(){
+	void Start ()
+	{
 
 		trscript = GetComponent<TimeReverse> ();
 		playerStats = GameObject.Find ("PlayerStats").GetComponent<Text> ();
@@ -139,15 +159,17 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 	}
 
 	//fuer TimeReverse
+
 	#region ITR implementation
+
 	public void SaveTRObject ()
 	{
-		MyStatus status = new MyStatus();
+		MyStatus status = new MyStatus ();
 		status.myPosition = transform.position;
 		//status.myRotation = transform.rotation;, gibts doch nicht, oder?
 		trscript.PushTRObject (status);
-		Lemur.GetComponent<Rigidbody2D>().isKinematic = false;
-		Owl.GetComponent<Rigidbody2D>().isKinematic = false;
+		Lemur.GetComponent<Rigidbody2D> ().isKinematic = false;
+		Owl.GetComponent<Rigidbody2D> ().isKinematic = false;
 	}
 
 	public void LoadTRObject (TRObject trobject)
@@ -155,32 +177,33 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 		MyStatus newStatus = (MyStatus)trobject;
 		transform.position = newStatus.myPosition;
 		//transform.rotation = newStatus.myRotation;
-		Owl.GetComponent<Rigidbody2D>().isKinematic = true;
-		Lemur.GetComponent<Rigidbody2D>().isKinematic = true;
+		Owl.GetComponent<Rigidbody2D> ().isKinematic = true;
+		Lemur.GetComponent<Rigidbody2D> ().isKinematic = true;
 	}
+
 	#endregion
 
 	private class MyStatus: TRObject
 	{
 		public Vector2 myPosition;
 		//evtl. brauche mehr
-   	}
+	}
 
-	void OnDeath()
+	void OnDeath ()
 	{
 		Gamedata.Instance.Lives -= 1;
 		UpdateStats ();
 
 		//wenn schon verloren
-		if(Gamedata.Instance.Lives == 0){
+		if (Gamedata.Instance.Lives == 0) {
 			Application.LoadLevel ("Verloren");
 
 		}
 		//sollte doch lieber das TimeReversal aufgerufen werden
-		Spawn();
+		Spawn ();
 	}
 
-	void OnCollisionEnter2D(Collision2D	other)
+	void OnCollisionEnter2D (Collision2D	other)
 	{
 
 		if (other.gameObject.tag == "Platform") {  //tag von der sich bewegenden Plattform
@@ -192,90 +215,87 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
 			//this.transform.parent = collision.transform;
 
-			this.transform.SetParent(other.transform);  
+			this.transform.SetParent (other.transform);  
 			//                        das mit was ich colliediere wird Elternteil
 			//              ist eine Methode
 		}
 
 
-		if(other.gameObject.tag == "Fallenemy"){
-		Gamedata.Instance.Lives -= 1;
+		if (other.gameObject.tag == "Fallenemy") {
+			Gamedata.Instance.Lives -= 1;
 			UpdateStats ();
 
 			//wenn schon verloren
-			if(Gamedata.Instance.Lives == 0){
+			if (Gamedata.Instance.Lives == 0) {
 				Application.LoadLevel ("Verloren");
 
 			}
-	}
+		}
 
-		if(other.gameObject.tag == "Enemy")
-		{
-			Enemy enemy = other.gameObject.GetComponent<Enemy>();
-			BoxCollider2D col = other.gameObject.GetComponent<BoxCollider2D>();
-			BoxCollider2D mycol = this.gameObject.GetComponent<BoxCollider2D>();
+		if (other.gameObject.tag == "Enemy") {
+			Enemy enemy = other.gameObject.GetComponent<Enemy> ();
+			BoxCollider2D col = other.gameObject.GetComponent<BoxCollider2D> ();
+			BoxCollider2D mycol = this.gameObject.GetComponent<BoxCollider2D> ();
 
-			if(enemy.invincible)
-			{
-				OnDeath();
-			}
-			else
-				if(mycol.bounds.center.y - mycol.bounds.extents.y > col.bounds.center.y + 0.5f * 
-					col.bounds.extents.y)
-				{
-					if(this.gameObject.tag == "Owl"){
+			if (enemy.invincible) {
+				OnDeath ();
+			} else if (mycol.bounds.center.y - mycol.bounds.extents.y > col.bounds.center.y + 0.5f *
+			    col.bounds.extents.y) {
+				if (this.gameObject.tag == "Owl") {
 
-						JumpedOnEnemy1(enemy.bumpSpeed);
-					}
-					if(this.gameObject.tag == "Lemur"){
-						JumpedOnEnemy2(enemy.bumpSpeed);
-					}
-
-					enemy.OnDeath();
+					JumpedOnEnemy1 (enemy.bumpSpeed);
 				}
-			else
-			{
-				OnDeath();
+				if (this.gameObject.tag == "Lemur") {
+					JumpedOnEnemy2 (enemy.bumpSpeed);
+				}
+
+				enemy.OnDeath ();
+			} else {
+				OnDeath ();
 			}
 		}
 
 	}
 
 
-	void OnCollisionExit2D(Collision2D other){
+	void OnCollisionExit2D (Collision2D other)
+	{
 		// ich hab viele Infos, will aber nur die vom Object
-		if(other.gameObject.tag	== "Platform" ){
-			this.transform.parent = null;}
+		if (other.gameObject.tag	== "Platform") {
+			this.transform.parent = null;
+		}
 	}
 
 
-	void JumpedOnEnemy1(float bumpSpeed)
+
+	void JumpedOnEnemy1 (float bumpSpeed)
 	{
 		
-		Owl.GetComponent<Rigidbody2D>().velocity = new Vector2 (Owl.GetComponent<Rigidbody2D>().velocity.x, bumpSpeed);
+		Owl.GetComponent<Rigidbody2D> ().velocity = new Vector2 (Owl.GetComponent<Rigidbody2D> ().velocity.x, bumpSpeed);
 
 	}
 
-	void JumpedOnEnemy2(float bumpSpeed)
+	void JumpedOnEnemy2 (float bumpSpeed)
 	{
 
-		Lemur.GetComponent<Rigidbody2D>().velocity = new Vector2 (Lemur.GetComponent<Rigidbody2D>().velocity.x, bumpSpeed);
+		Lemur.GetComponent<Rigidbody2D> ().velocity = new Vector2 (Lemur.GetComponent<Rigidbody2D> ().velocity.x, bumpSpeed);
 	}
 
 
-	void OnTriggerEnter2D(Collider2D other){
+	void OnTriggerEnter2D (Collider2D other)
+	{
 
 
-		if(other.tag == "Food"){
+		if (other.tag == "Food") {
 			Gamedata.Instance.Food += 1;
-			Destroy(other.gameObject);
+			Destroy (other.gameObject);
 			UpdateStats ();
 		}
 
 
 		if (other.tag == "Button1") {
 
-			GameObject.FindGameObjectWithTag("Wand1").GetComponent<WandbewegeKnopf> ().bewegeHoch();
+			GameObject.FindGameObjectWithTag ("Wand1").GetComponent<WandbewegeKnopf> ().bewegeHoch ();
 		}
 
 
@@ -285,34 +305,35 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
 		if (other.tag == "Deathzone") {
 			
-			OnDeathSpieler();
+			OnDeathSpieler ();
 
 		}
 
 		if (other.tag == "Coin") {
 			
 			Gamedata.Instance.Score += 10;
-			Destroy(other.gameObject);
+			Destroy (other.gameObject);
 			UpdateStats ();
 		}
 
 		if (other.tag == "Herz") {
 
 			Gamedata.Instance.Lives += 1;
-			Destroy(other.gameObject);
+			Destroy (other.gameObject);
 			UpdateStats ();
 		}
 	}
 
 	//wenn Spieler Deathzone berührt, so wird der TimeReverse aktiviert
 
-	void OnDeathSpieler(){
+	void OnDeathSpieler ()
+	{
 		Gamedata.Instance.Lives -= 1;
 		UpdateStats ();
 
 		Spawn ();
 		//wenn schon verloren
-		if(Gamedata.Instance.Lives == 0){
+		if (Gamedata.Instance.Lives == 0) {
 			Application.LoadLevel ("Verloren");
 		}
 
@@ -326,16 +347,17 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 			variable++;
 	}*/
 	}
-	public static void UpdateStats() 
+
+	public static void UpdateStats ()
 	{ 
-		playerStats.text = "Score: " + Gamedata.Instance.Score.ToString()
+		playerStats.text = "Score: " + Gamedata.Instance.Score.ToString ()
 			 // ToString: zuerst ist e snur eine zahl, aber wir wollen einen string
-			+ "\nLives: " + Gamedata.Instance.Lives.ToString()
-			+ "\nFood: " + Gamedata.Instance.Food.ToString(); 
+		+ "\nLives: " + Gamedata.Instance.Lives.ToString ()
+		+ "\nFood: " + Gamedata.Instance.Food.ToString (); 
 		//playerStats.text = "Score: " + Gamedata.Instance.Score.ToString()
 		//	+ "\nLives: " +Gamedata.Instance.Lives.ToString(); 
 
-	} 
+	}
 
     
 }
@@ -343,19 +365,19 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 [System.Serializable]
 public class MoveSettings
 {
-    public float RunVelocity = 12;
-    public float JumpVelocity = 2f;
-    public float DistanceToGround = 0.5f;
-    public LayerMask Ground;
+	public float RunVelocity = 12;
+	public float JumpVelocity = 2f;
+	public float DistanceToGround = 0.5f;
+	public LayerMask Ground;
 }
 
 [System.Serializable]
 public class InputSettings
 {
-    public string PLAYER1_SIDEWAYS_AXIS = "Player1Horizontal";
-    public string PLAYER1_JUMP_AXIS = "Player1Jump";
-    public string PLAYER1_FLY_AXIS = "Player1Fly";
-    public string PLAYER2_SIDEWAYS_AXIS = "Player2Horizontal";
-    public string PLAYER2_JUMP_AXIS = "Player2Jump";
-    public string PLAYER2_CROUCH_AXIS = "Player2Crouch";
+	public string PLAYER1_SIDEWAYS_AXIS = "Player1Horizontal";
+	public string PLAYER1_JUMP_AXIS = "Player1Jump";
+	public string PLAYER1_FLY_AXIS = "Player1Fly";
+	public string PLAYER2_SIDEWAYS_AXIS = "Player2Horizontal";
+	public string PLAYER2_JUMP_AXIS = "Player2Jump";
+	public string PLAYER2_CROUCH_AXIS = "Player2Crouch";
 }
