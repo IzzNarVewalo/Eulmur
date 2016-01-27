@@ -18,6 +18,7 @@ TagManager:
   - Herz
   - Fallenemy
   - Ground
+  - Affengrenze
   layers:
   - Default
   - TransparentFX

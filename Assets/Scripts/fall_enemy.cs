@@ -9,23 +9,27 @@ public class fall_enemy : MonoBehaviour, ITR {
 
 	private TimeReverse trscript;
 
-	IEnumerator FallDown() { 
 
-		float verzoegerung = 0.5f;
-
-		yield return new WaitForSeconds (verzoegerung); 
-
-	}
 
 	void Start(){
 		trscript = GetComponent<TimeReverse> ();
-		//immer wenn IEnumerator aufrufen, weil nicht normale Methode, sondern mit Wartezeit
-		StartCoroutine(FallDown ());
 
 	}
 
+	public void fallen(){
 
-	void Update(){
+
+		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
+			return;
+
+		float amtToMove = variablen.currentSpeed * Time.deltaTime; 
+
+		//             bewege dich
+		transform.Translate (Vector2.down * amtToMove, Space.World);
+
+	}
+
+	/*void Update(){
 		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
 			return;
 
@@ -35,10 +39,11 @@ public class fall_enemy : MonoBehaviour, ITR {
 		transform.Translate (Vector2.down * amtToMove, Space.World);
 
 
-	}
+	}*/
 
 
 	void OnCollisionEnter2D(Collision2D other){
+
 
 		if(other.gameObject.tag == "Ground"){
 			
@@ -58,7 +63,7 @@ public class fall_enemy : MonoBehaviour, ITR {
 		status.myPosition = transform.position;
 		//status.myRotation = transform.rotation;, gibts doch nicht, oder?
 		trscript.PushTRObject (status);
-		this.GetComponent<Rigidbody2D>().isKinematic = false;
+		//this.GetComponent<Rigidbody2D>().isKinematic = false;
 
 	}
 

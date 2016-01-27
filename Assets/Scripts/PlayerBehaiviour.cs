@@ -237,6 +237,10 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 
 	void OnTriggerEnter2D(Collider2D other){
 
+		if (other.tag == "Affengrenze") {
+			gameObject.GetComponent<fall_enemy> ().fallen ();
+		}
+
 		if (other.tag == "Deathzone") {
 			
 			OnDeathSpieler ();
