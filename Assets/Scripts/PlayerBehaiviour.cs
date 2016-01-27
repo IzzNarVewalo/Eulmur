@@ -265,6 +265,12 @@ public class PlayerBehaiviour : MonoBehaviour, ITR {
 	void OnTriggerEnter2D(Collider2D other){
 
 
+		if(other.tag == "Food"){
+			Gamedata.Instance.Food += 1;
+
+		}
+
+
 		if (other.tag == "Button1") {
 
 			GameObject.FindGameObjectWithTag("Wand1").GetComponent<WandbewegeKnopf> ().bewegeHoch();
