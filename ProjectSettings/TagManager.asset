@@ -23,6 +23,8 @@ TagManager:
   - Button1
   - Wand1
   - Tuer
+  - Username
+  - Password
   layers:
   - Default
   - TransparentFX
