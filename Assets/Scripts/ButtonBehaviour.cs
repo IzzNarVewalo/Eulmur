@@ -20,7 +20,7 @@ public class ButtonBehaviour : MonoBehaviour {
 		if (Gamedata.Instance.Score >= 1500) {
 
 			Gamedata.Instance.Score -= 1500;
-			GameObject.FindGameObjectWithTag("Owl").GetComponent<PlayerBehaiviour> ().angezogen = PlayerBehaiviour.Kostum.Einhornhorn;
+			PlayerBehaiviour.angezogen = PlayerBehaiviour.Kostum.Einhornhorn;
 			PlayerBehaiviour.zeige ();
 		
 		}
