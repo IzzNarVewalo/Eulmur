@@ -25,6 +25,7 @@ TagManager:
   - Tuer
   - Username
   - Password
+  - RepeatPassword
   layers:
   - Default
   - TransparentFX
