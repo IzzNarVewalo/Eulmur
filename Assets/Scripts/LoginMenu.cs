@@ -33,17 +33,22 @@ public class LoginMenu : MonoBehaviour {
             Debug.Log("ouldn't connect to the server: " + connection.error);
         else if (connection.text.Equals("\n1"))
         {
-            var getData = new WWW("http://www.1000sunny.de/games/eulmur/getdata.php",form);
-            yield return getData;
+            var getMoney = new WWW("http://www.1000sunny.de/games/eulmur/getmoney.php", form);
+            yield return getMoney;
+            var getLives = new WWW("http://www.1000sunny.de/games/eulmur/getlives.php", form);
+            yield return getLives;
+            var getClothes = new WWW("http://www.1000sunny.de/games/eulmur/getclothes.php", form);
+            yield return getClothes;
 
-            if (getData.error != null)
-                Debug.Log("ouldn't connect to the server: " + connection.error);
-            else
-                PlayerData.LoadData(getData.text);
+            if (getMoney.error != null && getClothes.error != null && getLives.error != null)
+                Debug.Log("Couldn't connect to the server: " + connection.error);
+            else { 
+                PlayerData.LoadData(GameObject.FindGameObjectWithTag("Username").GetComponent<InputField>().text,getMoney.text,getLives.text,getClothes.text);
+                SceneManager.LoadScene(2);
+            }
         }
-            //get WWWData from DB
         else
-            Debug.Log("nö" + connection.text);
+            Debug.Log("falsches pw" + connection.text);
     } 
 
     public void backToMenu()

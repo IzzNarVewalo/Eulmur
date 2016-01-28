@@ -40,24 +40,16 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		case Kostum.Einhornhorn:
 			Owl.GetComponent<SpriteRenderer> ().sprite = spriteOwlEin;
 			GameObject.FindGameObjectWithTag ("Lemur").GetComponent<SpriteRenderer> ().sprite = spriteLemurEin;
-
 			break;
-			//transform.SetParent (customOwl.transform);  
-
 		case Kostum.Schnurrbart:
-
 			GameObject.FindGameObjectWithTag ("Owl").GetComponent<SpriteRenderer> ().sprite = spriteOwlSchnurr;
 			GameObject.FindGameObjectWithTag ("Lemur").GetComponent<SpriteRenderer> ().sprite = spriteLemurSchnurr;
-
 			break;
 		case Kostum.Krone: 
-
 			GameObject.FindGameObjectWithTag ("Owl").GetComponent<SpriteRenderer> ().sprite = spriteOwlKron;
 			GameObject.FindGameObjectWithTag ("Lemur").GetComponent<SpriteRenderer> ().sprite = spriteLemurKron;
 			break;
-
 		case Kostum.nichts: 
-
 			GameObject.FindGameObjectWithTag ("Owl").GetComponent<SpriteRenderer> ().sprite = spriteOwlnichts;
 			GameObject.FindGameObjectWithTag ("Lemur").GetComponent<SpriteRenderer> ().sprite = spriteLemurnichts;
 			break;
@@ -74,7 +66,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		//Lemur = Camera.GetComponent<cameraScript>().Lemur;
 		p1SidewaysInput = p1JumpInput = 0;
 		p2SidewaysInput = p2JumpInput = 0;
-		Gamedata.Instance.Lives = 5; //Leben festlegen
+		Gamedata.Instance.Lives = PlayerData.hp; //Leben festlegen
 		Gamedata.Instance.Food = 0;
 
 	}

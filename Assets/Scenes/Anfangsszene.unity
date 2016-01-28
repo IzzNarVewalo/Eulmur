@@ -143,7 +143,7 @@ Transform:
   m_LocalScale: {x: 0.4825743, y: 0.43749955, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!114 &156320365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,7 +299,7 @@ Transform:
   m_LocalScale: {x: 0.44890627, y: 0.43749955, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!114 &510586266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +322,7 @@ GameObject:
   - 212: {fileID: 527871799}
   - 50: {fileID: 527871798}
   - 61: {fileID: 527871797}
+  - 114: {fileID: 527871801}
   m_Layer: 0
   m_Name: Eulmur
   m_TagString: Untagged
@@ -397,11 +398,32 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 527871796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.41939884, y: -2.58, z: 0}
+  m_LocalPosition: {x: 0, y: -2.58, z: 0}
   m_LocalScale: {x: 0.26834518, y: 0.25504372, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 1
+--- !u!114 &527871801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 527871796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e6a57b6e9c571448a0999ce92a6170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSettings:
+    RunVelocity: 8
+    JumpVelocity: 2
+    DistanceToGround: 0.5
+    Ground:
+      serializedVersion: 2
+      m_Bits: 0
+  inputSettings:
+    PLAYER_SIDEWAYS_AXIS: Horizontal
+    PLAYER_JUMP_AXIS: Jump
 --- !u!1 &601481065
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,11 +492,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 601481065}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.57, y: -3.08, z: 0}
+  m_LocalPosition: {x: 6.74, y: -3.08, z: 0}
   m_LocalScale: {x: 0.28989848, y: 0.37295678, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1128851529
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +507,7 @@ GameObject:
   - 4: {fileID: 1128851531}
   - 212: {fileID: 1128851530}
   m_Layer: 0
-  m_Name: Wolekne
+  m_Name: Wolken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -601,11 +623,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1244735550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.34, y: -2.83, z: 0}
+  m_LocalPosition: {x: -6.94, y: -2.83, z: 0}
   m_LocalScale: {x: 0.26999998, y: 0.24999976, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &1943104850
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +640,7 @@ GameObject:
   - 61: {fileID: 1943104851}
   m_Layer: 0
   m_Name: New Sprite
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -678,4 +700,4 @@ Transform:
   m_LocalScale: {x: 0.87937504, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
