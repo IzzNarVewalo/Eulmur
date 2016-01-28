@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaiviour : MonoBehaviour, ITR
 {
@@ -8,7 +9,6 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	public InputSettings inputSettings;
 	public Transform spawnPoint;
 	public GameObject Owl, Lemur, Camera;
-	private Vector2 owlVelocity, lemurVelocity;
 	private float p1SidewaysInput, p2SidewaysInput, p1JumpInput, p2JumpInput;
 	public LayerMask Layers;
 
@@ -72,9 +72,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		Camera = GameObject.FindGameObjectWithTag ("MainCamera");
 		//Owl = Camera.GetComponent<cameraScript>().Owl;
 		//Lemur = Camera.GetComponent<cameraScript>().Lemur;
-		owlVelocity = Vector3.zero;
 		p1SidewaysInput = p1JumpInput = 0;
-		lemurVelocity = Vector3.zero;
 		p2SidewaysInput = p2JumpInput = 0;
 		Gamedata.Instance.Lives = 5; //Leben festlegen
 		Gamedata.Instance.Food = 0;
@@ -240,7 +238,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 		//wenn schon verloren
 		if (Gamedata.Instance.Lives == 0) {
-			Application.LoadLevel ("Verloren");
+			SceneManager.LoadScene("Verloren");
 
 		}
 		//sollte doch lieber das TimeReversal aufgerufen werden
@@ -271,7 +269,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 			//wenn schon verloren
 			if (Gamedata.Instance.Lives == 0) {
-				Application.LoadLevel ("Verloren");
+				SceneManager.LoadScene (6);
 
 			}
 		}
@@ -378,7 +376,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		Spawn ();
 		//wenn schon verloren
 		if (Gamedata.Instance.Lives == 0) {
-			Application.LoadLevel ("Verloren");
+			SceneManager.LoadScene(6);
 		}
 
 		//TimeReverse wird aktiviert -> soll für Gegner, Platformen und Spieler gelten

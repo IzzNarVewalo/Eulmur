@@ -30,12 +30,20 @@ public class LoginMenu : MonoBehaviour {
         var connection = new WWW("http://www.1000sunny.de/games/eulmur/login.php", form);
         yield return connection;
         if (connection.error != null)
-            Debug.Log("ouldn't connect to the server: "+connection.error );
+            Debug.Log("ouldn't connect to the server: " + connection.error);
         else if (connection.text.Equals("\n1"))
-            Debug.Log("yes");
+        {
+            var getData = new WWW("http://www.1000sunny.de/games/eulmur/getdata.php",form);
+            yield return getData;
+
+            if (getData.error != null)
+                Debug.Log("ouldn't connect to the server: " + connection.error);
+            else
+                PlayerData.LoadData(getData.text);
+        }
             //get WWWData from DB
         else
-            Debug.Log("nö"+ connection.text);
+            Debug.Log("nö" + connection.text);
     } 
 
     public void backToMenu()
