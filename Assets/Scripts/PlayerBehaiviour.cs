@@ -105,21 +105,22 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	void Jump ()
 	{
 		//jump abhängig vom food
-		if (p1JumpInput != 0 && OwlGrounded ()) {
+		if (p1JumpInput != 0 ) {
+		    if (OwlGrounded())
+		    {
+		        Owl.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity, ForceMode2D.Impulse);
+		    }
+		    else
+		    {
 
-
-			Owl.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
-			// = new Vector2(player1Rigidbody.velocity.x, moveSettings.JumpVelocity);
-
-		} else {
-
-			if (Gamedata.Instance.Food > 0 && p1JumpInput != 0) {
-				Owl.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity * Gamedata.Instance.Food, ForceMode2D.Impulse);
-				Gamedata.Instance.Food -= 1;
-				UpdateStats ();
-
-			}
-			if (p2JumpInput != 0 && LemurGrounded ()) {
+		        if (Gamedata.Instance.Food > 0)
+		        {
+		            Owl.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity, ForceMode2D.Impulse);
+		            Gamedata.Instance.Food -= 1;
+		            UpdateStats();
+		        }
+		    }
+		    if (p2JumpInput != 0 && LemurGrounded ()) {
 				Lemur.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
 				//player2Rigidbody.velocity = new Vector2(player2Rigidbody.velocity.x, moveSettings.JumpVelocity);
 			}
@@ -128,13 +129,11 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 	bool LemurGrounded ()
 	{
-
 		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
 	}
 
 	bool OwlGrounded ()
 	{
-
 		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Owl").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
 	}
 
@@ -143,23 +142,16 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		GameObject.FindGameObjectWithTag ("Owl").transform.position = spawnPoint.position;
 		GameObject.FindGameObjectWithTag ("Lemur").transform.position = spawnPoint.position;
 	}
-
-	// Update is called once per frame
 	void Update ()
 	{
-		//Debug.Log(p1JumpInput);
-
 		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse> () != null)
 			return;
-
 		GetPlayer1Input ();
 		GetPlayer2Input ();
-
 	}
 
 	void LateUpdate ()
 	{
-
 		if (Owl.transform.position.x < Camera.transform.position.x - 8)
 			Owl.transform.position = new Vector2 (Camera.transform.position.x - 8, Owl.transform.position.y);
 		else if (Owl.transform.position.x > Camera.transform.position.x + 8)
@@ -169,7 +161,6 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 	void FixedUpdate ()
 	{
-
 		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse> () != null)
 			return;
 
@@ -184,12 +175,10 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 	void Start ()
 	{
-
 		trscript = GetComponent<TimeReverse> ();
 		playerStats = GameObject.Find ("PlayerStats").GetComponent<Text> ();
 		UpdateStats ();
 		timereverse = false;
-
 	}
 
 	//fuer TimeReverse

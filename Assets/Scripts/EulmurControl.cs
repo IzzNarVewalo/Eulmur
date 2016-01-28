@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 
@@ -8,6 +9,7 @@ public class EulmurControl : MonoBehaviour {
     public MoveSettings moveSettings;
     public InputSettings inputSettings;
     private float SidewaysInput, JumpInput;
+    public GameObject Player;
 
     void Awake()
     {
@@ -15,6 +17,7 @@ public class EulmurControl : MonoBehaviour {
     }
     void Update ()
     {
+        Debug.Log(Input.GetAxis("Horizontal"));
         GetPlayerInput();
         Run();
         Jump();
@@ -23,24 +26,25 @@ public class EulmurControl : MonoBehaviour {
     void GetPlayerInput()
     {
         SidewaysInput = Input.GetAxis(inputSettings.PLAYER_SIDEWAYS_AXIS);
+        JumpInput = Input.GetAxis(inputSettings.PLAYER_JUMP_AXIS);
     }
 
     void Run()
     {
-        gameObject.GetComponent<Transform>().position += transform.right * SidewaysInput * Time.deltaTime * moveSettings.RunVelocity;
+        gameObject.GetComponent<Transform>().position += transform.right * SidewaysInput * Time.deltaTime * moveSettings.RunVelocity / (Mathf.Abs(gameObject.transform.position.x) + 1);
     }
 
     void Jump()
     {
-        if (JumpInput != 0 && Grounded())
+        if (Math.Abs(JumpInput) > 0 && Grounded())
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
+            Player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
         }
     }
 
     bool Grounded()
     {
-        return Physics2D.Raycast(gameObject.transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
+        return Physics2D.Raycast(Player.transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
 
     }
 
@@ -49,7 +53,7 @@ public class MoveSettings
 {
     public float RunVelocity = 8;
     public float JumpVelocity = 2f;
-    public float DistanceToGround = 0.5f;
+    public float DistanceToGround = 50f;
     public LayerMask Ground;
 }
 
