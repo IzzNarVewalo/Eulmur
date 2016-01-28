@@ -102,32 +102,34 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
       
 	}
 
-	void Jump ()
-	{
-		//jump abhängig vom food
-		if (p1JumpInput != 0 ) {
-		    if (OwlGrounded())
-		    {
-		        Owl.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity, ForceMode2D.Impulse);
-		    }
-		    else
-		    {
+    private void Jump()
+    {
+        //jump abhängig vom food
+        if (p1JumpInput != 0)
+        {
+            if (OwlGrounded())
+            {
+                if (Gamedata.Instance.Food > 0)
+                {
+                    Owl.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity * 6, ForceMode2D.Impulse);
+                    Gamedata.Instance.Food -= 1;
+                    UpdateStats();
+                }
+                else
+                    Owl.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity, ForceMode2D.Impulse);
+            }
+            
 
-		        if (Gamedata.Instance.Food > 0)
-		        {
-		            Owl.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity, ForceMode2D.Impulse);
-		            Gamedata.Instance.Food -= 1;
-		            UpdateStats();
-		        }
-		    }
-		    if (p2JumpInput != 0 && LemurGrounded ()) {
-				Lemur.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * moveSettings.JumpVelocity, ForceMode2D.Impulse);
-				//player2Rigidbody.velocity = new Vector2(player2Rigidbody.velocity.x, moveSettings.JumpVelocity);
-			}
-		}
-	}
+                
+            
+        }
+        if (p2JumpInput != 0 && LemurGrounded())
+        {
+            Lemur.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity, ForceMode2D.Impulse);
+        }
+    }
 
-	bool LemurGrounded ()
+    bool LemurGrounded ()
 	{
 		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
 	}

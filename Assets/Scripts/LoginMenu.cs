@@ -49,7 +49,25 @@ public class LoginMenu : MonoBehaviour {
         }
         else
             Debug.Log("falsches pw" + connection.text);
-    } 
+    }
+
+    public void saveData()
+    {
+        StartCoroutine(setMoney());
+    }
+
+    IEnumerator setMoney()
+    {
+        var form = new WWWForm();
+        form.AddField("benutzername", PlayerData.username);
+        form.AddField("guthaben",Gamedata.Instance.Score);
+        var connection = new WWW("http://www.1000sunny.de/games/eulmur/setguthaben.php", form);
+        yield return connection;
+        if (connection.error != null)
+            Debug.Log("ouldn't connect to the server: " + connection.error);
+        else
+            Debug.Log("succesful");
+    }
 
     public void backToMenu()
     {

@@ -186,7 +186,7 @@ GameObject:
   - 4: {fileID: 457043572}
   - 212: {fileID: 457043571}
   m_Layer: 0
-  m_Name: Wolekne
+  m_Name: Wolken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -441,8 +441,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11413164, guid: e69bc18a43c9edc4fbfcac467379ba55, type: 2}
-        m_MethodName: LoadLevelByName
-        m_Mode: 5
+        m_MethodName: backToMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

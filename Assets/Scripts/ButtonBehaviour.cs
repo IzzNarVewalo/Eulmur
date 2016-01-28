@@ -1,14 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor.MemoryProfiler;
+using UnityEngine.SceneManagement;
 
 public class ButtonBehaviour : MonoBehaviour {
     
 	public void ResetStats()
 	{
-		Gamedata.Instance.Score = 0;
 		Gamedata.Instance.Lives = 5;
 	}
 
+    public void backToMenu()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+    public void LoadLevel1()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void Shop()
+    {
+        SceneManager.LoadScene(5);
+    }
 
 	public void Einhorn(){
 		if (Gamedata.Instance.Score >= 1500) {

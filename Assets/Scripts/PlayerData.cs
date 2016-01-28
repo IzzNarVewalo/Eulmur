@@ -16,8 +16,8 @@ public class PlayerData : MonoBehaviour
     public static void LoadData(string username, string money, string lives, string clothes)
     {
         PlayerData.username = username;
-        PlayerData.hp = Convert.ToInt32(lives);
-        PlayerData.money = Convert.ToInt32(money);
+        Gamedata.Instance.Lives = PlayerData.hp = Convert.ToInt32(lives);
+        Gamedata.Instance.Score = PlayerData.money = Convert.ToInt32(money);
         var clothe = clothes.ToCharArray();
         PlayerData.crown = (clothe[0] == 't');
         PlayerData.unicornhorn = (clothe[1] == 't');
