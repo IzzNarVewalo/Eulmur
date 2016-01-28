@@ -8,11 +8,14 @@ public class fallende_Platform : MonoBehaviour, ITR {
 
 	void Start()
 	{
+		gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
 		trscript = GetComponent<TimeReverse> ();
 
 	}
 
 	IEnumerator FallDown() { 
+
+	
 
 		float verzoegerung = 3f;
 
@@ -45,7 +48,7 @@ public class fallende_Platform : MonoBehaviour, ITR {
 	{
 		MyStatus status = new MyStatus();
 		status.myPosition = transform.position;
-		//status.myRotation = transform.rotation;, gibts doch nicht, oder?
+	
 		trscript.PushTRObject (status);
 		//gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
 

@@ -3,13 +3,14 @@ using System.Collections;
 
 public class WandbewegeKnopf : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+
+	public Variablen variablen;
+
+	public void bewegeHoch(){
+		
+		gameObject.transform.Translate (Vector3.up * 6f);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+
+
 }

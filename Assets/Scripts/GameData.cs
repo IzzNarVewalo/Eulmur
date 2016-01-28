@@ -5,12 +5,12 @@ public class Gamedata
 {
 
 	private static Gamedata instance;
-	//nur deklariert, noch nicht initialisiert
+    private int score;
+    //nur deklariert, noch nicht initialisiert
 
+    //konstruktor
 
-	//konstruktor
-
-	private Gamedata ()
+    private Gamedata ()
 	{
 		//sicher gehen, dass nur eine instanz erschaffen
 		//aber redundand, weil private -> nur in script änderbar und hier * macht
@@ -30,8 +30,6 @@ public class Gamedata
 		}
 	}
 
-	private int score;
-
 	//mit properties
 	//sowie methode, aber von außen wie eine Variable zugreifen: Score = 10; (10 = value)
 	public int Score {
@@ -46,12 +44,15 @@ public class Gamedata
 	//	return score;
 	//}
 
-
 	public int Lives {
 		get;//wenn get weg, dann lesegeschützt
 		set;//wenn set weg, dann schreibgeschützt
 	}
 
+	public int Food {
+		get;//wenn get weg, dann lesegeschützt
+		set;//wenn set weg, dann schreibgeschützt
+	}
 
 	//pausieren Variable
 	public bool Paused {
