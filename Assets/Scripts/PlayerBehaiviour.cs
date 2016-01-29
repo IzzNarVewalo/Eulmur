@@ -88,7 +88,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		Owl.transform.localScale  =   new Vector3(scaleOwl*(1), Owl.transform.localScale.y, Owl.transform.localScale.z); 
 			fangeanLaufen = 1;
 		}
-		if(p1SidewaysInput >= 0){
+		if(p1SidewaysInput > 0){
 
 			Owl.transform.localScale  =   new Vector3(scaleOwl*(-1), Owl.transform.localScale.y, Owl.transform.localScale.z); 
 			fangeanLaufen = 1;
@@ -157,9 +157,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
                 else
                     Owl.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity, ForceMode2D.Impulse);
             }
-            
-
-                
+                           
             
         }
         if (p2JumpInput != 0 && LemurGrounded())
@@ -223,9 +221,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		scaleOwl = Owl.transform.localScale.x;
 		scaleLemur = Lemur.transform.localScale.x;
 
-		anim =GetComponent<BonesEule_0>();
-
-
+	
 	}
 
 	//fuer TimeReverse
