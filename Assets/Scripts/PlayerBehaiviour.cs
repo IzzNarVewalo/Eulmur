@@ -27,6 +27,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	//fuer Animation:
 	public Animator anim; // Refrerence to the animator
 	private float fangeanLaufen;
+	private float Lemurlauf;
 	//aus
 
 	public enum Kostum {nichts, Einhornhorn, Schnurrbart, Krone};
@@ -112,18 +113,24 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		if(p2SidewaysInput < 0){
 
 			Lemur.transform.localScale  =   new Vector3(scaleLemur*(1), Lemur.transform.localScale.y, Lemur.transform.localScale.z); 
-
+			Lemurlauf = 1;
 
 		}
-		if(p2SidewaysInput >= 0){
+		if(p2SidewaysInput > 0){
 
 			Lemur.transform.localScale  =   new Vector3(scaleLemur*(-1), Lemur.transform.localScale.y, Lemur.transform.localScale.z); 
+			Lemurlauf = 1;
 		
-		
+		}
+
+		if(p2SidewaysInput == 0){
+
+			Lemurlauf = -1;
 		}
 
 		p2JumpInput = Input.GetAxisRaw (inputSettings.PLAYER2_JUMP_AXIS);
-
+		// Update the animator variables
+		anim.SetFloat("Lemurlauf", Lemurlauf);
 
 
 	}
@@ -226,7 +233,6 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		timereverse = false;
 		scaleOwl = Owl.transform.localScale.x;
 		scaleLemur = Lemur.transform.localScale.x;
-
 	
 	}
 
