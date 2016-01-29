@@ -24,6 +24,11 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	private float scaleOwl;
 	private float scaleLemur;
 
+	//fuer Animation:
+	public Animator anim; // Refrerence to the animator
+	private float fangeanLaufen;
+	//aus
+
 	public enum Kostum {nichts, Einhornhorn, Schnurrbart, Krone};
 
 	public static Kostum angezogen = Kostum.nichts;
@@ -81,14 +86,17 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		if(p1SidewaysInput < 0){
 
 		Owl.transform.localScale  =   new Vector3(scaleOwl*(1), Owl.transform.localScale.y, Owl.transform.localScale.z); 
-		Debug.Log(Owl.transform.localScale.x*-1);
+			fangeanLaufen = 1;
 		}
 		if(p1SidewaysInput >= 0){
 
 			Owl.transform.localScale  =   new Vector3(scaleOwl*(-1), Owl.transform.localScale.y, Owl.transform.localScale.z); 
-			Debug.Log(Owl.transform.localScale.x*-1);
+			fangeanLaufen = 1;
 		}
 		p1JumpInput = Input.GetAxisRaw (inputSettings.PLAYER1_JUMP_AXIS);
+
+		// Update the animator variables
+		anim.SetFloat("fangeanLaufen", fangeanLaufen);
 	}
 
 	void GetPlayer2Input ()
@@ -98,15 +106,20 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		if(p2SidewaysInput < 0){
 
 			Lemur.transform.localScale  =   new Vector3(scaleLemur*(1), Lemur.transform.localScale.y, Lemur.transform.localScale.z); 
-			Debug.Log(Owl.transform.localScale.x*-1);
+
+
 		}
 		if(p2SidewaysInput >= 0){
 
 			Lemur.transform.localScale  =   new Vector3(scaleLemur*(-1), Lemur.transform.localScale.y, Lemur.transform.localScale.z); 
-			Debug.Log(Owl.transform.localScale.x*-1);
+		
+		
 		}
 
 		p2JumpInput = Input.GetAxisRaw (inputSettings.PLAYER2_JUMP_AXIS);
+
+
+
 	}
 
 	void Run ()
@@ -209,6 +222,10 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		timereverse = false;
 		scaleOwl = Owl.transform.localScale.x;
 		scaleLemur = Lemur.transform.localScale.x;
+
+		anim =GetComponent<BonesEule_0>();
+
+
 	}
 
 	//fuer TimeReverse

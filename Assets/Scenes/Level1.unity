@@ -3492,7 +3492,7 @@ MonoBehaviour:
   moveSettings:
     RunVelocity: 12
     JumpVelocity: 2
-    DistanceToGround: 5
+    DistanceToGround: 7
     Ground:
       serializedVersion: 2
       m_Bits: 256
@@ -3518,6 +3518,7 @@ MonoBehaviour:
   spriteLemurSchnurr: {fileID: 0}
   spriteLemurKron: {fileID: 0}
   spriteLemurnichts: {fileID: 0}
+  anim: {fileID: 0}
   timereverse: 0
 --- !u!61 &447643100
 BoxCollider2D:
@@ -7768,7 +7769,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 44b4bcc0c2e0a53479a6b163e2f44dfa, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -7874,7 +7875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSettings:
     RunVelocity: 8
-    JumpVelocity: 2
+    JumpVelocity: 1
     DistanceToGround: 1
     Ground:
       serializedVersion: 2
@@ -7901,6 +7902,7 @@ MonoBehaviour:
   spriteLemurSchnurr: {fileID: 0}
   spriteLemurKron: {fileID: 0}
   spriteLemurnichts: {fileID: 0}
+  anim: {fileID: 0}
   timereverse: 0
 --- !u!1001 &1225863586
 Prefab:
