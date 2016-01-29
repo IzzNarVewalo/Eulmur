@@ -93,6 +93,12 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 			Owl.transform.localScale  =   new Vector3(scaleOwl*(-1), Owl.transform.localScale.y, Owl.transform.localScale.z); 
 			fangeanLaufen = 1;
 		}
+
+		if(p1SidewaysInput == 0){
+
+				fangeanLaufen = -1;
+		}
+
 		p1JumpInput = Input.GetAxisRaw (inputSettings.PLAYER1_JUMP_AXIS);
 
 		// Update the animator variables
