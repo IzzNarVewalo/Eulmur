@@ -21,7 +21,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	public Sprite spriteLemurKron;
 	public Sprite spriteLemurnichts;
 
-	private float scale;
+	private float scaleOwl;
+	private float scaleLemur;
 
 	public enum Kostum {nichts, Einhornhorn, Schnurrbart, Krone};
 
@@ -79,12 +80,12 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		p1SidewaysInput = Input.GetAxis (inputSettings.PLAYER1_SIDEWAYS_AXIS);
 		if(p1SidewaysInput < 0){
 
-		Owl.transform.localScale  =   new Vector3(scale*(1), Owl.transform.localScale.y, Owl.transform.localScale.z); 
+		Owl.transform.localScale  =   new Vector3(scaleOwl*(1), Owl.transform.localScale.y, Owl.transform.localScale.z); 
 		Debug.Log(Owl.transform.localScale.x*-1);
 		}
 		if(p1SidewaysInput >= 0){
 
-			Owl.transform.localScale  =   new Vector3(scale*(-1), Owl.transform.localScale.y, Owl.transform.localScale.z); 
+			Owl.transform.localScale  =   new Vector3(scaleOwl*(-1), Owl.transform.localScale.y, Owl.transform.localScale.z); 
 			Debug.Log(Owl.transform.localScale.x*-1);
 		}
 		p1JumpInput = Input.GetAxisRaw (inputSettings.PLAYER1_JUMP_AXIS);
@@ -93,6 +94,17 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	void GetPlayer2Input ()
 	{
 		p2SidewaysInput = Input.GetAxis (inputSettings.PLAYER2_SIDEWAYS_AXIS);
+
+		if(p2SidewaysInput < 0){
+
+			Lemur.transform.localScale  =   new Vector3(scaleLemur*(1), Lemur.transform.localScale.y, Lemur.transform.localScale.z); 
+			Debug.Log(Owl.transform.localScale.x*-1);
+		}
+		if(p2SidewaysInput >= 0){
+
+			Lemur.transform.localScale  =   new Vector3(scaleLemur*(-1), Lemur.transform.localScale.y, Lemur.transform.localScale.z); 
+			Debug.Log(Owl.transform.localScale.x*-1);
+		}
 
 		p2JumpInput = Input.GetAxisRaw (inputSettings.PLAYER2_JUMP_AXIS);
 	}
@@ -195,7 +207,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		playerStats = GameObject.Find ("PlayerStats").GetComponent<Text> ();
 		UpdateStats ();
 		timereverse = false;
-		scale = Owl.transform.localScale.x;
+		scaleOwl = Owl.transform.localScale.x;
+		scaleLemur = Lemur.transform.localScale.x;
 	}
 
 	//fuer TimeReverse
