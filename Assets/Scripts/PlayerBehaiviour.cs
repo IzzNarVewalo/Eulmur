@@ -182,12 +182,14 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
     bool LemurGrounded ()
 	{
 		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
+		Debug.DrawRay(GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector2.down,Color.green, 10f);
 	}
 
 	bool OwlGrounded ()
 	{
 		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Owl").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
-	}
+		Debug.DrawRay(GameObject.FindGameObjectWithTag ("Owl").transform.position, Vector2.down,Color.green, 10f);
+			}
 
 	public void Spawn ()
 	{
@@ -231,8 +233,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		playerStats = GameObject.Find ("PlayerStats").GetComponent<Text> ();
 		UpdateStats ();
 		timereverse = false;
-		scaleOwl = Owl.transform.localScale.x;
-		scaleLemur = Lemur.transform.localScale.x;
+		scaleOwl = -1 * Owl.transform.localScale.x;
+		scaleLemur = -1 * Lemur.transform.localScale.x;
 	
 	}
 

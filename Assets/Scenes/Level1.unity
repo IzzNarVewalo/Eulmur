@@ -3382,8 +3382,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 447643094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.36, y: 0.65, z: 0}
-  m_LocalScale: {x: 0.33358, y: 0.22521, z: 1}
+  m_LocalPosition: {x: -7.99, y: 0.5, z: 0}
+  m_LocalScale: {x: -0.33358, y: 0.22521, z: 1}
   m_Children:
   - {fileID: 1359567799}
   - {fileID: 1413010058}
@@ -4203,8 +4203,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -232.4, y: 156.3}
-  m_SizeDelta: {x: 160, y: 60}
+  m_AnchoredPosition: {x: -409.38, y: 213.6}
+  m_SizeDelta: {x: 160, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &562747606
 MonoBehaviour:
@@ -4227,10 +4227,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -7382,7 +7382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1188406374
 Animator:
   serializedVersion: 3
@@ -7695,8 +7695,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1217413698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.047482, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.2933998, y: 0.23515898, z: 1}
+  m_LocalPosition: {x: -7.16, y: 0.46, z: 0}
+  m_LocalScale: {x: -0.2933998, y: 0.23515898, z: 1}
   m_Children:
   - {fileID: 1531313306}
   - {fileID: 286076585}
