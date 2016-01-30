@@ -437,7 +437,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400506, guid: 303584478b0a51c488b276ebe44c4b26, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 48.12
+      value: 48.34
       objectReference: {fileID: 0}
     - target: {fileID: 400506, guid: 303584478b0a51c488b276ebe44c4b26, type: 2}
       propertyPath: m_LocalPosition.y
@@ -465,7 +465,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400506, guid: 303584478b0a51c488b276ebe44c4b26, type: 2}
       propertyPath: m_RootOrder
-      value: 41
+      value: 79
       objectReference: {fileID: 0}
     - target: {fileID: 6184980, guid: 303584478b0a51c488b276ebe44c4b26, type: 2}
       propertyPath: m_Size.x
@@ -1953,6 +1953,14 @@ Prefab:
     - target: {fileID: 463678, guid: 799ddec0c4939044789da6688ba14dd4, type: 2}
       propertyPath: m_LocalScale.x
       value: 0.4282049
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174748, guid: 799ddec0c4939044789da6688ba14dd4, type: 2}
+      propertyPath: m_Size.x
+      value: 21.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174748, guid: 799ddec0c4939044789da6688ba14dd4, type: 2}
+      propertyPath: m_Size.y
+      value: 1.66
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 799ddec0c4939044789da6688ba14dd4, type: 2}
@@ -4571,7 +4579,7 @@ GameObject:
   - 4: {fileID: 663168438}
   - 61: {fileID: 663168437}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: obereWand2grenze
   m_TagString: WandoberesEnde
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8043,6 +8051,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1304087263}
   - 212: {fileID: 1304087262}
+  - 61: {fileID: 1304087264}
   m_Layer: 0
   m_Name: Wippe
   m_TagString: Untagged
@@ -8092,6 +8101,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 99
+--- !u!61 &1304087264
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1304087261}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 21.96, y: 2.1699998}
 --- !u!1001 &1316407777
 Prefab:
   m_ObjectHideFlags: 0
@@ -8789,7 +8812,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1490020172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.91, y: 1.61, z: 0}
+  m_LocalPosition: {x: 29.91, y: -0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10228,7 +10251,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400506, guid: 303584478b0a51c488b276ebe44c4b26, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 23.44
+      value: 25.56
       objectReference: {fileID: 0}
     - target: {fileID: 400506, guid: 303584478b0a51c488b276ebe44c4b26, type: 2}
       propertyPath: m_LocalPosition.y
@@ -10256,7 +10279,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400506, guid: 303584478b0a51c488b276ebe44c4b26, type: 2}
       propertyPath: m_RootOrder
-      value: 88
+      value: 93
       objectReference: {fileID: 0}
     - target: {fileID: 6184980, guid: 303584478b0a51c488b276ebe44c4b26, type: 2}
       propertyPath: m_Size.x
@@ -10749,11 +10772,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 444532, guid: 5a466a527193b404287c98de0a69d090, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 35.5
+      value: 34.08
       objectReference: {fileID: 0}
     - target: {fileID: 444532, guid: 5a466a527193b404287c98de0a69d090, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.56
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 444532, guid: 5a466a527193b404287c98de0a69d090, type: 2}
       propertyPath: m_LocalPosition.z
@@ -10777,7 +10800,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 444532, guid: 5a466a527193b404287c98de0a69d090, type: 2}
       propertyPath: m_RootOrder
-      value: 73
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 181978, guid: 5a466a527193b404287c98de0a69d090, type: 2}
       propertyPath: m_Name
@@ -11699,3 +11722,45 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &2130262865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2130262867}
+  - 61: {fileID: 2130262866}
+  m_Layer: 0
+  m_Name: Affenfallausloeser
+  m_TagString: Affengrenze
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &2130262866
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2130262865}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 17.35}
+--- !u!4 &2130262867
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2130262865}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 122.86, y: 7.71, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 162
