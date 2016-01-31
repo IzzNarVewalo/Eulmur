@@ -367,8 +367,19 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 
 		if (other.tag == "Affengrenze") {
+
+
+			GameObject[] Affen;
+
 			
-			GameObject.FindGameObjectWithTag ("Fallenemy").GetComponent<fall_enemy> ().fallen ();
+			Affen = GameObject.FindGameObjectsWithTag ("Fallenemy");
+			foreach(GameObject Affe in Affen){
+				
+				Affe.GetComponent<fall_enemy> ().fallen();
+
+			}
+
+
 		}
 
 		if (other.tag == "Deathzone") {
@@ -392,7 +403,15 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		}
 	}
 
-	//wenn Spieler Deathzone berührt, so wird der TimeReverse aktiviert
+
+
+
+
+
+
+
+
+
 
 	void OnDeathSpieler ()
 	{
