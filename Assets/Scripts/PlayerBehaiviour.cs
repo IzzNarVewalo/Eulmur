@@ -46,13 +46,14 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
         Owl.transform.GetChild(4).GetComponent<SpriteRenderer>().enabled = PlayerData.unicornhorn;
         Owl.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = PlayerData.crown;
         Owl.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = PlayerData.moustache;
-        Lemur.transform.GetChild(4).GetComponent<SpriteRenderer>().enabled = PlayerData.unicornhorn;
-        Lemur.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = PlayerData.crown;
-        Lemur.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = PlayerData.moustache;
-        Debug.Log(PlayerData.moustache);
-	}
+        Lemur.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = PlayerData.unicornhorn;
+        Lemur.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = PlayerData.crown;
+        Lemur.transform.GetChild(7).GetComponent<SpriteRenderer>().enabled = PlayerData.moustache;
+        Debug.Log(Owl.transform.GetChild(4));
+        Debug.Log(Lemur.transform.GetChild(5));
+    }
 
-	private void Awake ()
+    private void Awake ()
 	{
 		Camera = GameObject.FindGameObjectWithTag ("MainCamera");
 		//Owl = Camera.GetComponent<cameraScript>().Owl;
