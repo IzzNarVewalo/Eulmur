@@ -42,35 +42,10 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 
 	public void umziehen(){
-
-		switch(angezogen)
-		{
-
-		case Kostum.Einhornhorn:
-                Owl.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = true;
-                Owl.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = false;
-                Owl.transform.GetChild(7).GetComponent<SpriteRenderer>().enabled = false;
-                break;
-		case Kostum.Schnurrbart:
-                Debug.Log("umziehen");
-                Owl.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = false;
-                Owl.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = false;
-                Owl.transform.GetChild(7).GetComponent<SpriteRenderer>().enabled = true;
-                break;
-		case Kostum.Krone:
-                Owl.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = false;
-                Owl.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = true;
-                Owl.transform.GetChild(7).GetComponent<SpriteRenderer>().enabled = false;
-                break;
-		case Kostum.nichts:
-                Owl.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = false;
-                Owl.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = false;
-                Owl.transform.GetChild(7).GetComponent<SpriteRenderer>().enabled = false;
-                break;
-		default:
-			break;
-		}
-
+                Owl.transform.GetChild(4).GetComponent<SpriteRenderer>().enabled = PlayerData.unicornhorn;
+                Owl.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = PlayerData.crown;
+                Owl.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = PlayerData.moustache;
+        Debug.Log(PlayerData.moustache);
 	}
 
 	private void Awake ()
@@ -83,7 +58,6 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
         //Leben festlegen
 		Gamedata.Instance.Lives = PlayerData.hp; 
 		Gamedata.Instance.Food = 0;
-
 	}
 
 	//fuer Eule
@@ -182,21 +156,20 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
         }
         if (p2JumpInput != 0 && LemurGrounded())
         {
-            Debug.Log("sadas");
             Lemur.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity, ForceMode2D.Impulse);
         }
     }
 
     bool LemurGrounded ()
 	{
-		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
 		Debug.DrawRay(GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector3.down,Color.green);
+		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
 	}
 
 	bool OwlGrounded ()
 	{
-		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Owl").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
 		Debug.DrawRay(GameObject.FindGameObjectWithTag ("Owl").transform.position, Vector3.down,Color.green);
+		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Owl").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
 			}
 
 	public void Spawn ()
@@ -245,7 +218,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		timereverse = false;
 		scaleOwl = -1 * Owl.transform.localScale.x;
 		scaleLemur = -1 * Lemur.transform.localScale.x;
-	
+        umziehen();
 	}
 
 	//fuer TimeReverse

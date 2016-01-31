@@ -29,8 +29,9 @@ public class ButtonBehaviour : MonoBehaviour {
 		if (Gamedata.Instance.Score >= 1500) {
 
 			Gamedata.Instance.Score -= 1500;
-			PlayerBehaiviour.angezogen =  PlayerBehaiviour.Kostum.Einhornhorn;
-            GameObject.FindGameObjectWithTag("Owl").GetComponent<PlayerBehaiviour>().umziehen();
+            PlayerData.crown = false;
+            PlayerData.moustache = false;
+            PlayerData.unicornhorn = true;
         }
 	}
 
@@ -42,8 +43,9 @@ public class ButtonBehaviour : MonoBehaviour {
 		if (Gamedata.Instance.Score >= 100) {
 
 			Gamedata.Instance.Score -= 100;
-            PlayerBehaiviour.angezogen = PlayerBehaiviour.Kostum.Schnurrbart;
-            GameObject.FindGameObjectWithTag("Owl").GetComponent<PlayerBehaiviour>().umziehen();
+            PlayerData.crown = false;
+            PlayerData.moustache = true;
+            PlayerData.unicornhorn = false;
             Debug.Log("nach dem umziehen");
         }
 	}
@@ -53,8 +55,9 @@ public class ButtonBehaviour : MonoBehaviour {
 		if (Gamedata.Instance.Score >= 1200) {
 
 			Gamedata.Instance.Score -= 1200;
-            PlayerBehaiviour.angezogen = PlayerBehaiviour.Kostum.Krone;
-            GameObject.FindGameObjectWithTag("Owl").GetComponent<PlayerBehaiviour>().umziehen();
+            PlayerData.crown = true;
+            PlayerData.moustache = false;
+            PlayerData.unicornhorn = false;
 
         }
 	}
@@ -68,16 +71,19 @@ public class ButtonBehaviour : MonoBehaviour {
 
 			switch (zahl) {
 			case 0:
-                    PlayerBehaiviour.angezogen = PlayerBehaiviour.Kostum.Einhornhorn;
-                    GameObject.FindGameObjectWithTag("Owl").GetComponent<PlayerBehaiviour>().umziehen();
+                    PlayerData.crown = true;
+                    PlayerData.moustache = false;
+                    PlayerData.unicornhorn = false;
                     break;
 			case 1:
-                    PlayerBehaiviour.angezogen = PlayerBehaiviour.Kostum.Schnurrbart;
-                    GameObject.FindGameObjectWithTag("Owl").GetComponent<PlayerBehaiviour>().umziehen();
+                    PlayerData.crown = false;
+                    PlayerData.moustache = true;
+                    PlayerData.unicornhorn = false;
                     break;
 			case 2:
-                    PlayerBehaiviour.angezogen = PlayerBehaiviour.Kostum.Krone;
-                    GameObject.FindGameObjectWithTag("Owl").GetComponent<PlayerBehaiviour>().umziehen();
+                    PlayerData.crown = false;
+                    PlayerData.moustache = false;
+                    PlayerData.unicornhorn = true;
                     break;
 			default: Gamedata.Instance.Lives += 1;
 				break;
