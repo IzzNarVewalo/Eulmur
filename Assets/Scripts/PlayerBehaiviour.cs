@@ -203,6 +203,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	{
 		GameObject.FindGameObjectWithTag ("Owl").transform.position = spawnPoint.position;
 		GameObject.FindGameObjectWithTag ("Lemur").transform.position = spawnPoint.position;
+		GameObject.FindGameObjectWithTag("MainCamera").transform.position = spawnPoint.position;
+
 	}
 	void Update ()
 	{

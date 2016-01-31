@@ -21,25 +21,14 @@ public class fall_enemy : MonoBehaviour, ITR {
 		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
 			return;
 
+		gameObject.GetComponent<Rigidbody2D> ().isKinematic = false;
 
-		float amtToMove = variablen.currentSpeed * Time.deltaTime; 
+		//float amtToMove = variablen.currentSpeed * Time.deltaTime; 
 
 		//             bewege dich
-		transform.Translate (Vector2.down * amtToMove, Space.World);
+		//transform.Translate (Vector2.down * amtToMove, Space.World);
 
 	}
-
-	/*void Update(){
-		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
-			return;
-
-		float amtToMove = variablen.currentSpeed * Time.deltaTime; 
-
-		//             bewege dich
-		transform.Translate (Vector2.down * amtToMove, Space.World);
-
-
-	}*/
 
 
 	void OnCollisionEnter2D(Collision2D other){
