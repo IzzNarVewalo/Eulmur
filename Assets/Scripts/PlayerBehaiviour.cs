@@ -41,10 +41,14 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	public bool timereverse;
 
 
-	public void umziehen(){
-                Owl.transform.GetChild(4).GetComponent<SpriteRenderer>().enabled = PlayerData.unicornhorn;
-                Owl.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = PlayerData.crown;
-                Owl.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = PlayerData.moustache;
+	public void umziehen()
+    {
+        Owl.transform.GetChild(4).GetComponent<SpriteRenderer>().enabled = PlayerData.unicornhorn;
+        Owl.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = PlayerData.crown;
+        Owl.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = PlayerData.moustache;
+        Lemur.transform.GetChild(4).GetComponent<SpriteRenderer>().enabled = PlayerData.unicornhorn;
+        Lemur.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = PlayerData.crown;
+        Lemur.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = PlayerData.moustache;
         Debug.Log(PlayerData.moustache);
 	}
 

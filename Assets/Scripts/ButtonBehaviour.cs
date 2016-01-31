@@ -25,45 +25,51 @@ public class ButtonBehaviour : MonoBehaviour {
         SceneManager.LoadScene(5);
     }
 
+    //prüfe ob so viel Geld da
+    //abziehen
+    //neuen Sprite laden
+
 	public void Einhorn(){
 		if (Gamedata.Instance.Score >= 1500) {
 
 			Gamedata.Instance.Score -= 1500;
-            PlayerData.crown = false;
-            PlayerData.moustache = false;
             PlayerData.unicornhorn = true;
         }
 	}
 
-	//prüfe ob so viel Geld da
-	//abziehen
-	//neuen Sprite laden
+    public void EinhornAusziehen()
+    {
+        PlayerData.unicornhorn = false;
+    }
 
-	public void Schnurer(){
+    public void Schnurrbart(){
 		if (Gamedata.Instance.Score >= 100) {
 
 			Gamedata.Instance.Score -= 100;
-            PlayerData.crown = false;
             PlayerData.moustache = true;
-            PlayerData.unicornhorn = false;
-            Debug.Log("nach dem umziehen");
         }
 	}
 
-
+    public void SchnurrbartAusziehen()
+    {
+        PlayerData.moustache = false;
+    }
+    
 	public void Krone(){
 		if (Gamedata.Instance.Score >= 1200) {
 
 			Gamedata.Instance.Score -= 1200;
             PlayerData.crown = true;
-            PlayerData.moustache = false;
-            PlayerData.unicornhorn = false;
 
         }
 	}
 
+    public void KroneAusziehen()
+    {
+        PlayerData.crown = false;
+    }
 
-	public void Ueberraschung(){
+    public void Ueberraschung(){
 		if (Gamedata.Instance.Score >= 850) {
 
 			Gamedata.Instance.Score -= 850;
@@ -72,17 +78,11 @@ public class ButtonBehaviour : MonoBehaviour {
 			switch (zahl) {
 			case 0:
                     PlayerData.crown = true;
-                    PlayerData.moustache = false;
-                    PlayerData.unicornhorn = false;
                     break;
 			case 1:
-                    PlayerData.crown = false;
                     PlayerData.moustache = true;
-                    PlayerData.unicornhorn = false;
                     break;
 			case 2:
-                    PlayerData.crown = false;
-                    PlayerData.moustache = false;
                     PlayerData.unicornhorn = true;
                     break;
 			default: Gamedata.Instance.Lives += 1;
