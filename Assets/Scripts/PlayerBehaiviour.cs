@@ -424,6 +424,14 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		Gamedata.Instance.Lives -= 1;
 		UpdateStats ();
 
+
+
+		OnDeath ();
+
+
+
+
+
 		Spawn ();
 		//wenn schon verloren
 		if (Gamedata.Instance.Lives == 0) {
