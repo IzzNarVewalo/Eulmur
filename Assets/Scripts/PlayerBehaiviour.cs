@@ -175,6 +175,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
         }
         if (p2JumpInput != 0 && LemurGrounded())
         {
+            Debug.Log("sadas");
             Lemur.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity, ForceMode2D.Impulse);
         }
     }
