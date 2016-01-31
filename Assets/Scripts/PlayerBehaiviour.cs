@@ -349,6 +349,13 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	}
 
 
+
+	IEnumerator Nacheinander(GameObject Affe, float wartezeit){
+		yield return new WaitForSeconds (wartezeit);
+		Affe.GetComponent<fall_enemy> ().fallen();
+
+	}
+
 	void OnTriggerEnter2D (Collider2D other)
 	{
 
@@ -371,19 +378,14 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 
 		if (other.tag == "Affengrenze") {
-
-
-			GameObject[] Affen;
-
-			
+			float wartezeit = 2f;
+			GameObject[] Affen;			
 			Affen = GameObject.FindGameObjectsWithTag ("Fallenemy");
-			foreach(GameObject Affe in Affen){
-				
-				Affe.GetComponent<fall_enemy> ().fallen();
-
+			//ruft alle gleichzeitig auf-> muessen immer um zwei erhoehen
+			foreach(GameObject Affe in Affen){	
+				wartezeit++; 
+				StartCoroutine (Nacheinander (Affe, wartezeit));
 			}
-
-
 		}
 
 		if (other.tag == "Deathzone") {
@@ -407,16 +409,6 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		}
 	}
 
-
-
-
-
-
-
-
-
-
-
 	void OnDeathSpieler ()
 	{
 		Gamedata.Instance.Lives -= 1;
@@ -425,10 +417,6 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 
 		OnDeath ();
-
-
-
-
 
 		Spawn ();
 		//wenn schon verloren

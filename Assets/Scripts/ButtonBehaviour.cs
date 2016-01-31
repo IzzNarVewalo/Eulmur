@@ -98,6 +98,7 @@ public class ButtonBehaviour : MonoBehaviour {
 			default: Gamedata.Instance.Lives += 1;
 				break;
 			}
+
 			UpdateStats ();
 		}
 	}

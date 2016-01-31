@@ -16,6 +16,7 @@ public class fall_enemy : MonoBehaviour, ITR {
 
 	}
 
+
 	public void fallen(){
 		
 		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
@@ -42,6 +43,7 @@ public class fall_enemy : MonoBehaviour, ITR {
 		}
 
 	}
+
 
 
 	//fuer TimeReverse
