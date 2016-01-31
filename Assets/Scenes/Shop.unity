@@ -167,6 +167,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 402873615}
   - 212: {fileID: 402873614}
+  - 114: {fileID: 402873616}
   m_Layer: 0
   m_Name: Shop
   m_TagString: Untagged
@@ -216,6 +217,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &402873616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 402873613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab62194da5b04a46810dc7a9576a28a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &448655887
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +240,7 @@ GameObject:
   - 114: {fileID: 448655890}
   - 114: {fileID: 448655889}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Schnurrbart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -290,7 +302,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 448655890}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 402873616}
+        m_MethodName: Schnurer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &448655890
@@ -338,7 +361,7 @@ GameObject:
   - 114: {fileID: 494623343}
   - 114: {fileID: 494623342}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Krone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -400,7 +423,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 494623343}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 402873616}
+        m_MethodName: Krone
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &494623343
@@ -835,7 +869,7 @@ GameObject:
   - 114: {fileID: 1473400821}
   - 114: {fileID: 1473400820}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Random
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -897,7 +931,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1473400821}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 402873613}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1473400821
@@ -945,7 +990,7 @@ GameObject:
   - 114: {fileID: 1479349236}
   - 114: {fileID: 1479349235}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Leben
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1141,7 +1186,7 @@ GameObject:
   - 114: {fileID: 2060841924}
   - 114: {fileID: 2060841923}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Einhorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1203,7 +1248,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2060841924}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 402873616}
+        m_MethodName: Einhorn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2060841924
