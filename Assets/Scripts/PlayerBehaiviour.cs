@@ -106,6 +106,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		anim.SetFloat("fangeanLaufen", fangeanLaufen);
 	}
 
+	//fuer Lemur
 	void GetPlayer2Input ()
 	{
 		p2SidewaysInput = Input.GetAxis (inputSettings.PLAYER2_SIDEWAYS_AXIS);
@@ -386,7 +387,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 		if (other.tag == "Affengrenze") {
 			
-			gameObject.GetComponent<fall_enemy> ().fallen ();
+			GameObject.FindGameObjectWithTag ("Fallenemy").GetComponent<fall_enemy> ().fallen ();
 		}
 
 		if (other.tag == "Deathzone") {

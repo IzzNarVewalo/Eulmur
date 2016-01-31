@@ -17,10 +17,10 @@ public class fall_enemy : MonoBehaviour, ITR {
 	}
 
 	public void fallen(){
-
-
+		
 		if (Gamedata.Instance.Paused && gameObject.GetComponent<TimeReverse>() != null)
 			return;
+
 
 		float amtToMove = variablen.currentSpeed * Time.deltaTime; 
 
