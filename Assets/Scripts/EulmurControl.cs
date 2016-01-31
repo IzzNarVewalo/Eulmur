@@ -17,7 +17,6 @@ public class EulmurControl : MonoBehaviour {
     }
     void Update ()
     {
-        Debug.Log(Input.GetAxis("Horizontal"));
         GetPlayerInput();
         Run();
         Jump();

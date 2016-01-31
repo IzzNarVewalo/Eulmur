@@ -30,15 +30,12 @@ public class ButtonBehaviour : MonoBehaviour {
 
 			Gamedata.Instance.Score -= 1500;
 			PlayerBehaiviour.angezogen =  PlayerBehaiviour.Kostum.Einhornhorn;
-			gameObject.GetComponent<PlayerBehaiviour>().zeige ();
-		
-		}
+            GameObject.FindGameObjectWithTag("Owl").GetComponent<PlayerBehaiviour>().umziehen();
+        }
 	}
 
 	//prüfe ob so viel Geld da
-
 	//abziehen
-
 	//neuen Sprite laden
 
 	public void Schnurer(){
@@ -46,8 +43,9 @@ public class ButtonBehaviour : MonoBehaviour {
 
 			Gamedata.Instance.Score -= 100;
             PlayerBehaiviour.angezogen = PlayerBehaiviour.Kostum.Schnurrbart;
-			gameObject.GetComponent<PlayerBehaiviour>().zeige ();
-		}
+            GameObject.FindGameObjectWithTag("Owl").GetComponent<PlayerBehaiviour>().umziehen();
+            Debug.Log("nach dem umziehen");
+        }
 	}
 
 
@@ -56,9 +54,9 @@ public class ButtonBehaviour : MonoBehaviour {
 
 			Gamedata.Instance.Score -= 1200;
             PlayerBehaiviour.angezogen = PlayerBehaiviour.Kostum.Krone;
-			gameObject.GetComponent<PlayerBehaiviour>().zeige ();
+            GameObject.FindGameObjectWithTag("Owl").GetComponent<PlayerBehaiviour>().umziehen();
 
-		}
+        }
 	}
 
 
@@ -71,27 +69,25 @@ public class ButtonBehaviour : MonoBehaviour {
 			switch (zahl) {
 			case 0:
                     PlayerBehaiviour.angezogen = PlayerBehaiviour.Kostum.Einhornhorn;
-				break;
+                    GameObject.FindGameObjectWithTag("Owl").GetComponent<PlayerBehaiviour>().umziehen();
+                    break;
 			case 1:
                     PlayerBehaiviour.angezogen = PlayerBehaiviour.Kostum.Schnurrbart;
-				break;
+                    GameObject.FindGameObjectWithTag("Owl").GetComponent<PlayerBehaiviour>().umziehen();
+                    break;
 			case 2:
                     PlayerBehaiviour.angezogen = PlayerBehaiviour.Kostum.Krone;
-				break;
+                    GameObject.FindGameObjectWithTag("Owl").GetComponent<PlayerBehaiviour>().umziehen();
+                    break;
 			default: Gamedata.Instance.Lives += 1;
 				break;
 			}
-
-			gameObject.GetComponent<PlayerBehaiviour>().zeige ();
 		}
 	}
 
 	public void Herzen(){
 		if (Gamedata.Instance.Score >= 600) {
-
-
 			Gamedata.Instance.Score -= 600;
-		
 		}
 		Gamedata.Instance.Lives += 1;
 	}

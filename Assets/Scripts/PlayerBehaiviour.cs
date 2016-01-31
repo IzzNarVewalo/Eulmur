@@ -41,27 +41,32 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	public bool timereverse;
 
 
-	public void zeige(){
+	public void umziehen(){
 
 		switch(angezogen)
 		{
 
 		case Kostum.Einhornhorn:
-			Owl.GetComponent<SpriteRenderer> ().sprite = spriteOwlEin;
-			GameObject.FindGameObjectWithTag ("Lemur").GetComponent<SpriteRenderer> ().sprite = spriteLemurEin;
-			break;
+                Owl.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = true;
+                Owl.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = false;
+                Owl.transform.GetChild(7).GetComponent<SpriteRenderer>().enabled = false;
+                break;
 		case Kostum.Schnurrbart:
-			GameObject.FindGameObjectWithTag ("Owl").GetComponent<SpriteRenderer> ().sprite = spriteOwlSchnurr;
-			GameObject.FindGameObjectWithTag ("Lemur").GetComponent<SpriteRenderer> ().sprite = spriteLemurSchnurr;
-			break;
-		case Kostum.Krone: 
-			GameObject.FindGameObjectWithTag ("Owl").GetComponent<SpriteRenderer> ().sprite = spriteOwlKron;
-			GameObject.FindGameObjectWithTag ("Lemur").GetComponent<SpriteRenderer> ().sprite = spriteLemurKron;
-			break;
-		case Kostum.nichts: 
-			GameObject.FindGameObjectWithTag ("Owl").GetComponent<SpriteRenderer> ().sprite = spriteOwlnichts;
-			GameObject.FindGameObjectWithTag ("Lemur").GetComponent<SpriteRenderer> ().sprite = spriteLemurnichts;
-			break;
+                Debug.Log("umziehen");
+                Owl.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = false;
+                Owl.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = false;
+                Owl.transform.GetChild(7).GetComponent<SpriteRenderer>().enabled = true;
+                break;
+		case Kostum.Krone:
+                Owl.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = false;
+                Owl.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = true;
+                Owl.transform.GetChild(7).GetComponent<SpriteRenderer>().enabled = false;
+                break;
+		case Kostum.nichts:
+                Owl.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = false;
+                Owl.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = false;
+                Owl.transform.GetChild(7).GetComponent<SpriteRenderer>().enabled = false;
+                break;
 		default:
 			break;
 		}
@@ -75,7 +80,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		//Lemur = Camera.GetComponent<cameraScript>().Lemur;
 		p1SidewaysInput = p1JumpInput = 0;
 		p2SidewaysInput = p2JumpInput = 0;
-		Gamedata.Instance.Lives = PlayerData.hp; //Leben festlegen
+        //Leben festlegen
+		Gamedata.Instance.Lives = PlayerData.hp; 
 		Gamedata.Instance.Food = 0;
 
 	}
