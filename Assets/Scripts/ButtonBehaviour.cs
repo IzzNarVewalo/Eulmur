@@ -4,12 +4,18 @@ using UnityEditor.MemoryProfiler;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ButtonBehaviour : MonoBehaviour {
-    
-	public void Start(){
+public class ButtonBehaviour : MonoBehaviour
+{
 
 
-		UpdateStats ();
+    public static Text Geldstandanzeige;
+
+
+    public void Start(){
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Shop")) { 
+        Geldstandanzeige = GameObject.Find("geldstand").GetComponent<Text>();
+        UpdateStats ();
+         }
 	}
 
 	public void ResetStats()
@@ -112,13 +118,8 @@ public class ButtonBehaviour : MonoBehaviour {
 
 
 	private static void UpdateStats ()
-	{ 
-
-		Text Geldstandanzeige;
-		
-		Geldstandanzeige = GameObject.Find ("geldstand").GetComponent<Text> ();
-		Geldstandanzeige.text = "Geldstand: " + Gamedata.Instance.Score.ToString ();
-			
+	{
+	   
+	    Geldstandanzeige.text = "Geldstand: " + Gamedata.Instance.Score.ToString ();
 	}
-
 }

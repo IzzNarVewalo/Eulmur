@@ -49,8 +49,6 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
         Lemur.transform.GetChild(5).GetComponent<SpriteRenderer>().enabled = PlayerData.unicornhorn;
         Lemur.transform.GetChild(6).GetComponent<SpriteRenderer>().enabled = PlayerData.crown;
         Lemur.transform.GetChild(7).GetComponent<SpriteRenderer>().enabled = PlayerData.moustache;
-        Debug.Log(Owl.transform.GetChild(4));
-        Debug.Log(Lemur.transform.GetChild(5));
     }
 
     private void Awake ()
@@ -71,8 +69,9 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		p1SidewaysInput = Input.GetAxis (inputSettings.PLAYER1_SIDEWAYS_AXIS);
 		if(p1SidewaysInput < 0){
 
-		Owl.transform.localScale  =   new Vector3(scaleOwl*(1), Owl.transform.localScale.y, Owl.transform.localScale.z); 
-			fangeanLaufen = 1;
+		Owl.transform.localScale  =   new Vector3(scaleOwl * (1), Owl.transform.localScale.y, Owl.transform.localScale.z);
+                      
+                fangeanLaufen = 1;
 		}
 		if(p1SidewaysInput > 0){
 
@@ -149,12 +148,13 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 			{
                 if (Gamedata.Instance.Food > 0)
                 {
-                    Owl.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity * 6, ForceMode2D.Impulse);
+                    Owl.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity * 1.5f, ForceMode2D.Impulse);
                     Gamedata.Instance.Food -= 1;
                     UpdateStats();
                 }
                 else
                     Owl.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity, ForceMode2D.Impulse);
+                Debug.Log(moveSettings.JumpVelocity);
             }
                            
             
@@ -162,18 +162,19 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
         if (p2JumpInput != 0 && LemurGrounded())
         {
             Lemur.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity, ForceMode2D.Impulse);
+            Debug.Log(moveSettings.JumpVelocity);
         }
     }
 
     bool LemurGrounded ()
 	{
-		Debug.DrawRay(GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector3.down,Color.green);
+		Debug.DrawRay(GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector3.down* moveSettings.DistanceToGround,Color.green,5);
 		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
 	}
 
 	bool OwlGrounded ()
 	{
-		Debug.DrawRay(GameObject.FindGameObjectWithTag ("Owl").transform.position, Vector3.down,Color.green);
+		Debug.DrawRay(GameObject.FindGameObjectWithTag ("Owl").transform.position, Vector3.down,Color.green,5);
 		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Owl").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
 			}
 
@@ -221,8 +222,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		playerStats = GameObject.Find ("PlayerStats").GetComponent<Text> ();
 		UpdateStats ();
 		timereverse = false;
-		scaleOwl = -1 * Owl.transform.localScale.x;
-		scaleLemur = -1 * Lemur.transform.localScale.x;
+		scaleOwl = -1 * -0.2933998f;
+		scaleLemur = -1 * -0.33358f;
         umziehen();
 	}
 
@@ -263,12 +264,12 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 		UpdateStats ();
 
 		//wenn schon verloren
-		if (Gamedata.Instance.Lives == 0) {
+		if (Gamedata.Instance.Lives <= 0) {
 			SceneManager.LoadScene("Verloren");
 
 		}
 		//sollte doch lieber das TimeReversal aufgerufen werden
-		Spawn ();
+		//Spawn ();
 	}
 
 	void OnCollisionEnter2D (Collision2D	other)
@@ -283,7 +284,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 			//this.transform.parent = collision.transform;
 
-			this.transform.SetParent (other.transform);  
+			this.transform.SetParent (other.transform.parent);  
 			//                        das mit was ich colliediere wird Elternteil
 			//              ist eine Methode
 		}
@@ -294,7 +295,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 			UpdateStats ();
 
 			//wenn schon verloren
-			if (Gamedata.Instance.Lives == 0) {
+			if (Gamedata.Instance.Lives <= 0) {
 				SceneManager.LoadScene (6);
 
 			}
@@ -421,7 +422,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 		Spawn ();
 		//wenn schon verloren
-		if (Gamedata.Instance.Lives == 0) {
+		if (Gamedata.Instance.Lives <= 0) {
 			SceneManager.LoadScene(6);
 		}
 

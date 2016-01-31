@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour, ITR {
 		gameObject.GetComponent<BoxCollider2D> ().enabled = false;
 		gameObject.GetComponent<BoxCollider2D> ().isTrigger = true;
 		gameObject.GetComponent<Rigidbody2D> ().isKinematic = false;
-		Gamedata.Instance.Lives -= 1;
+		//Gamedata.Instance.Lives -= 1;
 		//GameObject.FindGameObjectWithTag ("Owl").GetComponent<PlayerBehaiviour> ().Leben += 1;
 	}
 
