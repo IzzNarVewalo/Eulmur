@@ -2,9 +2,16 @@
 using System.Collections;
 using UnityEditor.MemoryProfiler;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonBehaviour : MonoBehaviour {
     
+	public void Start(){
+
+
+		UpdateStats ();
+	}
+
 	public void ResetStats()
 	{
 		Gamedata.Instance.Lives = 5;
@@ -32,6 +39,7 @@ public class ButtonBehaviour : MonoBehaviour {
             PlayerData.crown = false;
             PlayerData.moustache = false;
             PlayerData.unicornhorn = true;
+			UpdateStats ();
         }
 	}
 
@@ -47,6 +55,7 @@ public class ButtonBehaviour : MonoBehaviour {
             PlayerData.moustache = true;
             PlayerData.unicornhorn = false;
             Debug.Log("nach dem umziehen");
+			UpdateStats ();
         }
 	}
 
@@ -58,6 +67,7 @@ public class ButtonBehaviour : MonoBehaviour {
             PlayerData.crown = true;
             PlayerData.moustache = false;
             PlayerData.unicornhorn = false;
+			UpdateStats ();
 
         }
 	}
@@ -88,6 +98,7 @@ public class ButtonBehaviour : MonoBehaviour {
 			default: Gamedata.Instance.Lives += 1;
 				break;
 			}
+			UpdateStats ();
 		}
 	}
 
@@ -96,6 +107,17 @@ public class ButtonBehaviour : MonoBehaviour {
 			Gamedata.Instance.Score -= 600;
 		}
 		Gamedata.Instance.Lives += 1;
+	}
+
+
+	private static void UpdateStats ()
+	{ 
+
+		Text Geldstandanzeige;
+		
+		Geldstandanzeige = GameObject.Find ("geldstand").GetComponent<Text> ();
+		Geldstandanzeige.text = "Geldstand: " + Gamedata.Instance.Score.ToString ();
+			
 	}
 
 }
