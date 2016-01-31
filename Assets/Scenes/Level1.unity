@@ -2674,7 +2674,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 318661887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 240.84, y: 2.9, z: -10}
+  m_LocalPosition: {x: 124.77, y: 2.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3348,7 +3348,7 @@ GameObject:
   - 114: {fileID: 447643098}
   m_Layer: 0
   m_Name: BonesLemur_1
-  m_TagString: Untagged
+  m_TagString: Lemur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3390,7 +3390,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 447643094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 234.12, y: 3.13, z: 0}
+  m_LocalPosition: {x: 118.05, y: 3.13, z: 0}
   m_LocalScale: {x: -0.33358, y: 0.22521, z: 1}
   m_Children:
   - {fileID: 1359567799}
@@ -3411,7 +3411,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: cc872a2b369848c48bc353e49a0b34e7, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -3442,7 +3442,7 @@ MonoBehaviour:
   moveSettings:
     RunVelocity: 12
     JumpVelocity: 2
-    DistanceToGround: 7
+    DistanceToGround: 1.5
     Ground:
       serializedVersion: 2
       m_Bits: 256
@@ -3481,7 +3481,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.3, y: 0.56}
+  m_Offset: {x: -0.3, y: -0.22}
   serializedVersion: 2
   m_Size: {x: 2.69, y: 10}
 --- !u!50 &447643101
@@ -7703,7 +7703,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1217413698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 230.49, y: 3.01, z: 0}
+  m_LocalPosition: {x: 121.61, y: 0.49, z: 0}
   m_LocalScale: {x: -0.2933998, y: 0.23515898, z: 1}
   m_Children:
   - {fileID: 1531313306}
@@ -8387,7 +8387,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 2.58, y: 16.93}
   serializedVersion: 2
@@ -8417,7 +8417,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1710393739
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: e77147911dba1254e9d3e8c498d09951, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11747,7 +11747,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2

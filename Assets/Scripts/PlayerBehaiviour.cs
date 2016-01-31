@@ -26,8 +26,8 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 	//fuer Animation:
 	public Animator anim; // Refrerence to the animator
-	private float fangeanLaufen;
-	private float Lemurlauf;
+	private float fangeanLaufen = -1f;
+	private float Lemurlauf = -1f;
 	//aus
 
 	public enum Kostum {nichts, Einhornhorn, Schnurrbart, Krone};
@@ -100,7 +100,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 				fangeanLaufen = -1;
 		}
 
-		p1JumpInput = Input.GetAxisRaw (inputSettings.PLAYER1_JUMP_AXIS);
+		p1JumpInput = Input.GetAxis (inputSettings.PLAYER1_JUMP_AXIS);
 
 		// Update the animator variables
 		anim.SetFloat("fangeanLaufen", fangeanLaufen);
@@ -128,7 +128,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 			Lemurlauf = -1;
 		}
 
-		p2JumpInput = Input.GetAxisRaw (inputSettings.PLAYER2_JUMP_AXIS);
+		p2JumpInput = Input.GetAxis(inputSettings.PLAYER2_JUMP_AXIS);
 		// Update the animator variables
 		anim.SetFloat("Lemurlauf", Lemurlauf);
 
@@ -160,7 +160,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
         if (p1JumpInput != 0)
         {
             if (OwlGrounded())
-            {
+			{
                 if (Gamedata.Instance.Food > 0)
                 {
                     Owl.GetComponent<Rigidbody2D>().AddForce(Vector2.up*moveSettings.JumpVelocity * 6, ForceMode2D.Impulse);
@@ -182,13 +182,13 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
     bool LemurGrounded ()
 	{
 		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
-		Debug.DrawRay(GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector2.down,Color.green, 10f);
+		Debug.DrawRay(GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector3.down,Color.green);
 	}
 
 	bool OwlGrounded ()
 	{
 		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Owl").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
-		Debug.DrawRay(GameObject.FindGameObjectWithTag ("Owl").transform.position, Vector2.down,Color.green, 10f);
+		Debug.DrawRay(GameObject.FindGameObjectWithTag ("Owl").transform.position, Vector3.down,Color.green);
 			}
 
 	public void Spawn ()
@@ -365,6 +365,10 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 	void OnTriggerEnter2D (Collider2D other)
 	{
 
+		if (other.tag == "Tuer") {
+			SceneManager.LoadScene ("Endszene");
+		}
+
 
 		if (other.tag == "Food") {
 			Gamedata.Instance.Food += 1;
@@ -380,6 +384,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
 
 
 		if (other.tag == "Affengrenze") {
+			
 			gameObject.GetComponent<fall_enemy> ().fallen ();
 		}
 
