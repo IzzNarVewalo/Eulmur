@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEditor.MemoryProfiler;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
