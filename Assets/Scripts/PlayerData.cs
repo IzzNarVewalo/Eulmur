@@ -6,7 +6,7 @@ public class PlayerData : MonoBehaviour
 {
 
     public static string username = "Guestrdztfuguho4657";
-    public static int hp = 5;
+    public static int hp = 10;
     public static int money = 0;
     public static int food = 0;
     public static bool moustache = false;
