@@ -11,11 +11,9 @@ GameObject:
   - 212: {fileID: 21219542}
   - 61: {fileID: 6111034}
   - 50: {fileID: 5064490}
-  - 114: {fileID: 11410674}
-  - 114: {fileID: 11492220}
   m_Layer: 8
   m_Name: fallende Platform
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,28 +61,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 21.96, y: 2.1699998}
---- !u!114 &11410674
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127960}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e5da7164a4c9034c81ccf4f4a4723a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11492220
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127960}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8af42448e98e27842b53f2c3e4141d81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &21219542
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -144,7 +120,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
-      value: Platform
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
