@@ -32,6 +32,7 @@ public class links_rechts_bewegende_Platform : MonoBehaviour, ITR {
 		float amtToMove = variablen.currentSpeed * Time.deltaTime; 
 
 		//             bewege dich
+        
 		transform.Translate (Vector2.right * amtToMove, Space.World);
 
 	}
