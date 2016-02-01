@@ -108,10 +108,13 @@ public class ButtonBehaviour : MonoBehaviour
 	}
 
 	public void Herzen(){
+		
 		if (Gamedata.Instance.Score >= 600) {
 			Gamedata.Instance.Score -= 600;
+			Gamedata.Instance.Lives += 1;
+			UpdateStats ();
 		}
-		Gamedata.Instance.Lives += 1;
+
 	}
 
 
