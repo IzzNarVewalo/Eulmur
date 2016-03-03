@@ -169,6 +169,7 @@ public class PlayerBehaiviour : MonoBehaviour, ITR
     bool LemurGrounded ()
 	{
 		Debug.DrawRay(GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector3.down* moveSettings.DistanceToGround,Color.green,5);
+        //                                                                                       auch an Objekt bindbar, sonst unendlich weit, 
 		return Physics2D.Raycast (GameObject.FindGameObjectWithTag ("Lemur").transform.position, Vector2.down, moveSettings.DistanceToGround, moveSettings.Ground);
 	}
 

@@ -22,7 +22,7 @@ public class Gamedata
 
 
 	public static Gamedata Instance { //schreibgeschützt
-		get {
+		get { //da drauf zugreifen
 			//*hier
 			if (instance == null)
 				instance = new Gamedata ();//neue Instanz erstellt
